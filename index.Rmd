@@ -1,3 +1,19 @@
 ---
 site: blogdown:::blogdown_site
 ---
+---
+title: My first blog post
+author: Gerardo Moreno
+data: 12-3-2020
+slug: my_first_post
+categories: [introduction, R, data science]
+tags: [R, blogdown]
+---
+
+My first blog post
+
+I like penguins
+
+```{r}
+library(tidyverse)
+```
