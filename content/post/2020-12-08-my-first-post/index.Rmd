@@ -11,7 +11,7 @@ This is my first post.
 
 I would like to just let you guys know I like penguins and the razorbacks. Woo Pig!
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 library(palmerpenguins)
 glimpse(penguins)
