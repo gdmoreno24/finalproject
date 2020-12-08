@@ -1,0 +1,59 @@
+---
+title: Introducing DASC 1104's Final Project
+author: Gerardo Moreno
+date: '2020-12-08'
+slug: introduction
+categories: [introduction, R, data science]
+tags: [R, blogdown]
+---
+
+For this project, I am examining the English Premier League statistics by players stats, like height/age compared to their respective position. For example, in the datasets "epl_players_stats.csv" and "players_1920_fin.csv" from FiveThirtyEight, the file goes into full detail about players like height, position, goals per game, goals given up, age, ect, so I will be examining if a player if more likely to succeed in this league based on their height or age. The "players_1920_fin.csv"" there were 22,502 observations and 35 Variables, and "epl_players_stats.csv" has 522 observations and 41 variables. The variable codes is a factor with multiple levels explaing what teams each player plays for and their statistics for the 19/20 season.
+
+The other two datasets "EPL_19_20_GW_Timeseries.csv" and "epl2020.csv" go into detail for the 19/20 statitics for each team in the English Premier League. In these data sets, we can find the results week by week of each team in the EPL and variable like win's, loss's, ties, points gained, goals given up, goals scored, ect.. The "EPL_19_20_GW_Timeseries.csv" has 1,048,575 observations and 77 variable and the "epl2020.csv" data set consits of 576 observations and 45 variables. These files have many levels going into full detail week by week, so i will have many outcomes to analyze.
+```{r, message=FALSE}
+library(here)
+library(ggplot2)
+library(tidyverse)
+library(readxl)
+library(tinytex)
+library(fivethirtyeight)
+knitr::opts_chunk$set(echo = FALSE, tidy = TRUE)
+epl1 <- read.csv(file = here::here("epl_data", "epl2020.csv"))
+epl2 <- read.csv(file = here::here("epl_data", "EPL_19_20_GW_Timeseries.csv"))
+epl3 <- read.csv(file = here::here("epl_data", "epl_players_stats.csv"))
+epl4 <- read.csv(file = here::here("epl_data", "players_1920_fin.csv"))
+head(epl1)
+head(epl2)
+head(epl3)
+head(epl4)
+```
+*Question 1: First, do soccer players score more goals based on their height? I will analyze each players statistics for the 19/20 season based off their heights. Go into detail about if tall players score more goals than short players or vise versa. The measurement will be based off the overall median height of every player in the league. To test this, I will be putting the data organized in a data visualization like a scatter plot.
+
+*Question 2: Second, do teams tend to preform better with older, experienced players or young, talented players. Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.
+
+*Question 3: Third, overall, do teams that spend more money correlate to their performance. Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart. 
+
+*Question 4: Fourth, To be announced.
+
+
+Using data obtained from FiveThirtyEight from multiple sources and the census, the next dataset I am going to investigate is the data of police killings and deaths in the United States through 2015-2016. The variables in the files include the date, name of state, name of deceased, race, and gender. The US population data is from the US Census Bureau website. There are 22,800 observations and 10 variables in the "clean_data.csv" file, which go into depth about police deaths. The "police_killings.csv" goes into depth about the police killing, which has 467 observations, and 34 variables. On the last dataset, the data is a collected from multiple police station from the biggest cities in the United States. With all the different data available, there should be enough data for me to analyze.
+
+```{r}
+police1 <- read.csv(file = here::here("police_data", "clean_data.csv"))
+police2 <- read.csv(file = here::here("police_data", "police_killings.csv"))
+police3 <- read.csv(file = here::here("police_data", "police-locals.csv"))
+glimpse(police1)
+```
+```{r}
+glimpse(police2)
+```
+```{r}
+glimpse(police3)
+```
+*Question 1: First, where do the police killings tend to happen more frequently. Using the "police_killings.csv" data I will analyze where these police killings tend to happen more frequently, like is there a state with notably more killings than the rest. I will preform this analysis with grouping, filtering, and creating a spacial map with ggplot to visualize my analysis.
+
+*Question 2: Second, do a certain race tend to be killed more? Again, using the "police_killings.csv" data, I will group the police killings by race and compare the number of killings by race. Also, I will being doing this for both police killing and police deaths, and I will be visualizing my findings with a bar chart for easy comparison.
+
+*Question 3: Third, Does the size of the task force correspond with the number of police killings? Using the third data set of "police-locals.csv", I will analyze if with more police officers tend to be more police killings. I will create a new variable, setting the new variable with the task force size divided by the amount of police killings and compare that to different cities. This can be answered using a simple bar graph to visualize my analysis.
+
+*Question 4: Fourth, to be decided.
