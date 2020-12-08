@@ -15,7 +15,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\
 [[menu.main]]
     name = "GitHub"
     url = "https://github.com/gdmoreno24"
-
+[[menu.main]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/gerardo-moreno-0816311b5/"
 [params]
     description = "A website built through Hugo and blogdown."
 
