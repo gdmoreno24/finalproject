@@ -12,7 +12,7 @@ tags: [R, blogdown]
 
 My first blog post
 
-I like penguins
+I like penguins, they have a cool slide
 
 ```{r}
 library(tidyverse)
