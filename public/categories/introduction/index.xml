@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>introduction on Gerardo Moreno&#39;s Blog</title>
+    <link>/categories/introduction/</link>
+    <description>Recent content in introduction on Gerardo Moreno&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/categories/introduction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing DASC 1104&#39;s Final Project</title>
+      <link>/2020/12/08/introduction/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/08/introduction/</guid>
+      <description>For this project, I am examining the English Premier League statistics by players stats, like height/age compared to their respective position. For example, in the datasets “epl_players_stats.csv” and “players_1920_fin.csv” from FiveThirtyEight, the file goes into full detail about players like height, position, goals per game, goals given up, age, ect, so I will be examining if a player if more likely to succeed in this league based on their height or age.</description>
+    </item>
+    
+    <item>
+      <title>My First Post</title>
+      <link>/2020/12/08/my-first-post/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/08/my-first-post/</guid>
+      <description>This is my first post.
+I would like to just let you guys know I like penguins and the razorbacks. Woo Pig!
+library(tidyverse) library(palmerpenguins) glimpse(penguins) ## Observations: 344 ## Variables: 8 ## $ species &amp;lt;fct&amp;gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Ade… ## $ island &amp;lt;fct&amp;gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgers… ## $ bill_length_mm &amp;lt;dbl&amp;gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1,… ## $ bill_depth_mm &amp;lt;dbl&amp;gt; 18.</description>
+    </item>
+    
+  </channel>
+</rss>
