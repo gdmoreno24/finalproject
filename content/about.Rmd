@@ -1,0 +1,6 @@
+---
+title: "About"
+date: "12-10-2020"
+---
+
+Hello! My name is **Gerardo Moreno**, and I'm a freshman at the University of Arkansas, majoring in Data Science. I enjoy playing and watching sports, traveling, eating, and learning. I was born and raised in Clarksville, Arkansas. I'm a first generation college student and excited to continue my education at the University of Arkansas.

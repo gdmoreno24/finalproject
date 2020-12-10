@@ -45,7 +45,7 @@ epl3 %>%
   filter(games >10, position != "Goalkeeper", goals > 1) %>%
   ggplot(aes(x = height, y = goals)) +
   geom_vline(xintercept = 175.4, linetype = "dashed", color = "blue") +
-  geom_boxplot(fill = "purple") +
+  geom_boxplot(fill = "purple4") +
   geom_jitter() +
   xlim(165,200) +
   facet_wrap(~ position) 
