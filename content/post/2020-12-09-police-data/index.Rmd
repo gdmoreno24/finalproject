@@ -18,25 +18,26 @@ police1 <- read.csv(file = here::here("police_data", "clean_data.csv"))
 police2 <- read.csv(file = here::here("police_data", "police_killings.csv"))
 police3 <- read.csv(file = here::here("police_data", "police-locals.csv"))
 police4 <- read.csv(file = here::here("police_data", "fatal-police-shootings-data.csv"))
-glimpse(police1)
+head(police1)
 ```
 
 ```{r}
-glimpse(police2)
+head(police2)
 police2 %>%
   ggplot(aes(longitude, latitude, color = raceethnicity)) +
       geom_point() 
 ```
 
 ```{r}
-glimpse(police2)
+head(police4)
 police4 %>%
-  ggplot(aes(x = race, fill = gender)) +
+  ggplot(aes(x = race, fill = flee)) +
   geom_bar()
 ```
 
 ```{r}
-glimpse(police4)
-police4 %>%
-  summarise(nrow(name,))
+head(police4)
+police4 %>% 
+  ggplot(aes(gender, fill = body_camera)) +
+  geom_bar()
 ```  
