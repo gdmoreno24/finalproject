@@ -6,7 +6,7 @@ slug: police-data
 categories: [Police, R, Data Science]
 tags: [R]
 ---
-```{r}
+```{r, message=FALSE}
 library(here)
 library(ggplot2)
 library(tidyverse)
@@ -22,11 +22,21 @@ glimpse(police1)
 ```
 
 ```{r}
-glimpse(police4)
-police4 %>%
-  select(name, armed, age, gender, race)
+glimpse(police2)
+police2 %>%
+  ggplot(aes(longitude, latitude, color = raceethnicity)) +
+      geom_point() 
 ```
 
 ```{r}
-glimpse(police3)
+glimpse(police2)
+police4 %>%
+  ggplot(aes(x = race, fill = gender)) +
+  geom_bar()
 ```
+
+```{r}
+glimpse(police4)
+police4 %>%
+  summarise(nrow(name,))
+```  
