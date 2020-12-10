@@ -200,63 +200,49 @@ epl4 &lt;- read.csv(file = here::here(&quot;epl_data&quot;, &quot;players_1920_f
 ## 18   WAT          34            19
 ## 19   CHE          66             4
 ## 20   WHU          39            16</code></pre>
-<pre><code>##    id            name nationality      team team_id age height weight
-## 1 816 Kevin De Bruyne          be  Man City     875  29    181     68
-## 2 622 Bruno Fernandes          pt   Man Utd     314  26    179     69
-## 3 812 Ricardo Pereira          pt Leicester     652  26    175     70
-## 4 287    Adama Traoré          es    Wolves     518  24    178     72
-## 5 158    Riyad Mahrez          dz  Man City     875  29    179     67
-## 6 576      Sadio Mané          sn Liverpool     339  28    175     69
-##     position             roles games exit_on_sub minutes rating_m goals assists
-## 1 Midfielder    M_C,M_L,M_R,FW    35           3    2800     7.97    13      20
-## 2 Midfielder       M_C,M_L,M_R    14           0    1223     7.73     8       7
-## 3   Defender       D_L,D_R,M_R    28           0    2520     7.50     3       2
-## 4    Forward        M_L,M_R,FW    37          10    2608     7.49     4       9
-## 5    Forward    AM_C,AM_L,AM_R    33          12    1942     7.48    11       9
-## 6    Forward AM_C,AM_L,AM_R,FW    35           4    2756     7.45    18       7
-##   yel_cards red_cards shots_m aerials_won_m motm successful_passes_pt
-## 1         3         0     2.8           0.5   10                 81.5
-## 2         2         0     3.1           0.2    3                 75.7
-## 3         1         0     0.6           1.5    2                 78.9
-## 4         1         0     1.2           1.2    6                 74.4
-## 5         0         0     2.2           0.3    3                 90.1
-## 6         3         0     2.2           1.2    7                 81.6
-##   key_passes_m dribbles_won_m fouls_given_m offside_m dispossessed_m passes_m
-## 1          3.9            1.4           0.8       0.1            0.9     54.5
-## 2          2.1            1.1           1.0       0.1            0.9     55.5
-## 3          1.0            2.1           1.3       0.0            1.1     56.1
-## 4          1.3            5.0           2.1       0.2            1.8     19.2
-## 5          1.8            1.6           0.9       0.4            1.0     33.2
-## 6          1.7            2.0           1.5       0.4            1.6     31.5
-##   accurate_crosses_m accurate_long_passes_m accurate_through_passes_m tackles_m
-## 1                2.1                    3.5                       0.4       1.3
-## 2                1.0                    3.3                       0.3       1.6
-## 3                0.3                    2.1                       0.1       4.2
-## 4                1.2                    0.2                       0.1       0.9
-## 5                0.6                    1.7                       0.2       0.8
-## 6                0.3                    1.0                       0.1       1.3
-##   interceptions_m fouls_m clearances_m dribbled_past_m owm_goals
-## 1             0.5     0.7          0.7             1.4         0
-## 2             0.8     0.6          1.0             2.4         0
-## 3             1.8     1.6          2.6             1.9         0
-## 4             0.4     1.1          0.4             0.4         0
-## 5             0.5     0.4          0.2             0.8         0
-## 6             0.4     1.3          0.2             0.8         0
-##   gk_in_goal_area_saves_m gk_inside_box_saves_m gk_outside_box_saves_m
-## 1                       0                     0                      0
-## 2                       0                     0                      0
-## 3                       0                     0                      0
-## 4                       0                     0                      0
-## 5                       0                     0                      0
-## 6                       0                     0                      0
-##   gk_saves_m
-## 1          0
-## 2          0
-## 3          0
-## 4          0
-## 5          0
-## 6          0</code></pre>
-<pre><code>##   avg_age
-## 1  26.375</code></pre>
+<pre><code>## # A tibble: 20 x 2
+##    team           avg_age
+##    &lt;fct&gt;            &lt;dbl&gt;
+##  1 Arsenal           25.9
+##  2 Aston Villa       27.1
+##  3 Bournemouth       25.9
+##  4 Brighton          26.8
+##  5 Burnley           28.6
+##  6 Chelsea           25.3
+##  7 Crystal Palace    28.6
+##  8 Everton           26.4
+##  9 Leicester         26.4
+## 10 Liverpool         26.6
+## 11 Man City          26.8
+## 12 Man Utd           25.1
+## 13 Newcastle         27.0
+## 14 Norwich           26.4
+## 15 Sheff Utd         28.1
+## 16 Southampton       25.5
+## 17 Tottenham         25.7
+## 18 Watford           28.3
+## 19 West Ham          28.1
+## 20 Wolves            25.4</code></pre>
+<pre><code>##    Teams GW38_Points GW38_Standing
+## 1    MCI          81             2
+## 2    MUN          66             3
+## 3    LIV          99             1
+## 4    BHA          41            15
+## 5    BUR          54            10
+## 6    TOT          59             6
+## 7    ARS          56             8
+## 8    BOU          34            18
+## 9    SHU          54             9
+## 10   CRY          43            14
+## 11   EVE          49            12
+## 12   LEI          62             5
+## 13   WOL          59             7
+## 14   NEW          44            13
+## 15   AVL          35            17
+## 16   NOR          21            20
+## 17   SOU          52            11
+## 18   WAT          34            19
+## 19   CHE          66             4
+## 20   WHU          39            16</code></pre>
 <p>*Question 3: Third, overall, do teams that spend more money correlate to their performance. Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart.</p>
 <p>*Question 4: Fourth, To be announced.</p>

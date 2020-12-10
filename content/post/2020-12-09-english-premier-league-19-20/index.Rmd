@@ -58,11 +58,17 @@ epl2 %>%
   select(Teams, GW38_Points, GW38_Standing)
 ```
 ```{r}
-head(epl3) 
+#head(epl3) 
 epl3 %>%
   select(name, age, team) %>%
-  filter(team == "Leicester") %>%
+  group_by(team) %>%
   summarise(avg_age = mean(age))
+
+epl2 %>%
+  filter(GW38_Points > 1) %>%
+  select(Teams, GW38_Points, GW38_Standing)
+
+
 ```
 *Question 3: Third, overall, do teams that spend more money correlate to their performance. Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart. 
 

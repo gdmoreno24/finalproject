@@ -21,34 +21,91 @@ police3 <- read.csv(file = here::here("police_data", "police-locals.csv"))
 police4 <- read.csv(file = here::here("police_data", "fatal-police-shootings-data.csv"))
 head(police1)
 ```
+Using data obtained from FiveThirtyEight, collected from The Washington Post and the census, the next dataset I am going to analyze the data of police killings and deaths in the United States, from 2015-2020. The variables in the files include the date, state, name of deceased, race, gender, ect. The US population data is from the US Census Bureau website. There are 22,800 observations and 10 variables in the "clean_data.csv" file, which go into depth about police deaths. The "police_killings.csv" goes into depth about the police killing, which has 467 observations, and 34 variables. On the last dataset, the data is a collected from multiple police station from the biggest cities in the United States. With all the different data available, there should be enough data for me to analyze. 
+In this project, I am going to look through data which explores fatal shootings by on duty police officers since 2015. Analyzing this data, I will be asking a variety of questions to help further understand my knowledge on police killings. As I continue to ask many questions, I will try to create a vizualation of the intrepetations I will gather. I will be making graphs using ggplot in R.
 
+*Question 1: First, where do the police killings tend to happen more frequently. Using the "police_killings.csv" data I will analyze where these police killings tend to happen more frequently, like is there a state with notably more killings than the rest. I will preform this analysis with grouping, filtering, and creating a spacial map with ggplot to visualize my analysis.
 ```{r}
-head(police2)
 police2 %>%
   ggplot(aes(longitude, latitude, color = raceethnicity)) +
       borders("state") +
       geom_point() +
-      coord_quickmap()
+      coord_quickmap() +
+      ggtitle("Pollice Killings in 2015")
 ```
-
-```{r}
-head(police4)
-police4 %>%
-  ggplot(aes(x = race, fill = flee)) +
-  geom_bar()
-```
-
-```{r}
-head(police4)
-police4 %>% 
-  ggplot(aes(gender, fill = manner_of_death)) +
-  geom_bar()
-```  
-
+In the graph above, the points show where the killing was at exactly in United States in the year of 2015 alone. I plotted the longitude on the x axis and latitude on the y axis, and the results shows that there were more police killings on the eastern part of the United States compared to the west.
 ```{r}
 police4 %>%
   ggplot(aes(x = state, fill = state)) +
   geom_bar() +
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(angle = 90))
+  theme(axis.text.x = element_text(angle = 90)) +
+  ggtitle("Pollice Killings by State 2015-2020")
 ```
+In the graph above, I was wanting to answer the question of which states tend to have the most police killings. From the results, it shows that California has significantly more police killings than any other state in the United States. This could be of many reason, for example population, size of police task force, and even the crime rate. More analysis on this to come in the near future.
+
+
+*Question 2: Second, do a certain race tend to be killed more? Again, using the "police_killings.csv" data, I will group the police killings by race and compare the number of killings by race. Using this data I will be analyzing which gender tends to be killed more often by police officers. Also, I will being doing this for both police killing and police deaths, and I will be visualizing my findings with a bar chart for easy comparison.
+```{r}
+police4 %>%
+  filter(race != "") %>%
+  ggplot(aes(x = race, fill = race)) +
+  geom_bar() +
+  ggtitle("Police Killings by Race (2015-2020)")
+```
+```{r}
+head(police4)
+police4 %>% 
+  filter(gender != "") %>%
+  ggplot(aes(gender, fill = gender)) +
+  geom_bar()
+```
+Using the data set, the results tend to show that white's are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female This could be of many factors that I am yet to draw conclusions from. Using these results I will be comparing the percent population of each race in the United States to the percent of police killings by race. So, that will answer if there are more white people getting killed because there are more white people in the United States. Therefore, we are going to be able to tell which race gets killed by the police based off the percent of the population that race makes up in the United States. I will be doing this for both police killings and police deaths since 2015. The data above excluded blank/unknown spaces in the dataset.
+
+*Question 3: Third, how are people getting killed and what is the death cause by. Using the dataset, I will be asking questions like: if the victim was armed, was there signs of mental illness, the threat level of victim, and if the victim was fleeing. I will be making visualizations using ggplot bar graphs to help visualize my results.
+
+```{r}
+police4 %>%
+  group_by(armed) %>%
+  mutate(sum_armed = length(armed)) %>%
+# filter sum_armed usable data 
+  ggplot(aes(x = armed, fill = armed)) +
+  geom_bar() +
+  ggtitle("Were Pollice Killing Victims Armed?") +
+  xlab("Item") +
+  theme(legend.position = "none")
+```
+The results of interpretation show that there are way too many variables to determine if the victim was armed with a deadly weapon. I need to figure out a way to filter the variable to be able to tell if the vicim was armed with a deadly weapon.
+
+```{r}
+police4 %>%
+  ggplot(aes(manner_of_death, fill = manner_of_death)) +
+  geom_bar() +
+  ggtitle("Manner of Death of Police Killings Victims") +
+  xlab("Manner of Death") +
+  ylab(" Number of Deaths")
+```
+As the results shown above by the graph, it tends to show that victim are mostly always killed by being shot. The two variable are quite similar, as the only difference is that if a taser would have been involved in the death.
+
+```{r}
+police4 %>%
+  ggplot(aes(threat_level, fill = body_camera)) +
+  geom_bar() +
+  ggtitle("Threat Level To Police Officers") +
+  xlab("Threat level of victim") +
+  ylab("Number of Deaths per Threat Level")
+```
+The victim of police killings tend to be killed more often if they are considered to be to show an "attack" to the police officer. There could be many reasons of this, and one of those reasons could be that the definition of an "attack" could be different to person to person. So, there could be no way to draw a definite conclusion to this question. Though, I was able to fill the bars of data of each threat level to determine if there was body camera footage to the police killing. The results of this analysis surprised me as the years of this data was being collected from 2015-2020, which I would suppose that the majority of cops would have a body camera at that point of time.
+
+```{r}
+
+```
+
+*Question 4: Third, Does the size of the task force correspond with the number of police killings? Using the third data set of "police-locals.csv", I will analyze if with more police officers tend to be more police killings. I will create a new variable, setting the new variable with the task force size divided by the amount of police killings and compare that to different cities. This can be answered using a simple bar graph to visualize my analysis.
+
+**To be Decided**
+
+*Conclusion
+
+**To be determened**
+
