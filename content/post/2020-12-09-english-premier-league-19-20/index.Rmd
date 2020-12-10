@@ -54,6 +54,7 @@ epl3 %>%
 ```{r}
 head(epl2) 
 epl2 %>%
+  filter(GW38_Points > 1) %>%
   select(Teams, GW38_Points, GW38_Standing)
 ```
 ```{r}
