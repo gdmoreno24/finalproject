@@ -1,0 +1,32 @@
+---
+title: Police Data
+author: Gerardo
+date: '2020-12-09'
+slug: police-data
+categories: [Police, R, Data Science]
+tags: [R]
+---
+```{r}
+library(here)
+library(ggplot2)
+library(tidyverse)
+library(readxl)
+library(tinytex)
+library(fivethirtyeight)
+knitr::opts_chunk$set(echo = FALSE, tidy = TRUE)
+police1 <- read.csv(file = here::here("police_data", "clean_data.csv"))
+police2 <- read.csv(file = here::here("police_data", "police_killings.csv"))
+police3 <- read.csv(file = here::here("police_data", "police-locals.csv"))
+police4 <- read.csv(file = here::here("police_data", "fatal-police-shootings-data.csv"))
+glimpse(police1)
+```
+
+```{r}
+glimpse(police4)
+police4 %>%
+  select(name, armed, age, gender, race)
+```
+
+```{r}
+glimpse(police3)
+```
