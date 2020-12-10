@@ -25,7 +25,7 @@ The other two datasets "EPL_19_20_GW_Timeseries.csv" and "epl2020.csv" go into d
 
 *Question 1: First, do soccer players score more goals based on their height? I will analyze each players statistics for the 19/20 season based off their heights. Go into detail about if tall players score more goals than short players or vise versa. The measurement will be based off the overall median height of every player in the league. To test this, I will be putting the data organized in a data visualization like a scatter plot.
 ```{r}
-glimpse(epl3)
+head(epl3)
 ```
 ```{r}
 epl3 %>%
@@ -52,12 +52,12 @@ epl3 %>%
 ```
 *Question 2: Second, do teams tend to preform better with older, experienced players or young, talented players. Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.
 ```{r}
-glimpse(epl2) 
+head(epl2) 
 epl2 %>%
   select(Teams, GW38_Points, GW38_Standing)
 ```
 ```{r}
-glimpse(epl3) 
+head(epl3) 
 epl3 %>%
   select(name, age, team) %>%
   filter(team == "Leicester") %>%
