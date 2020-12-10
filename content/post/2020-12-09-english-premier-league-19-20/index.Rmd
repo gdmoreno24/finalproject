@@ -50,6 +50,8 @@ epl3 %>%
   xlim(165,200) +
   facet_wrap(~ position) 
 ```
+The boxplot graph above shows the data for each position. The blue dashed line shows the average height of the players in the English Premier League, which is 175.4 cm or 5'7 ft. So, the results show that taller players tend to score more as forwards, which is surprising to me, as I would think a bit shorter, more agile player would be more effective.
+
 *Question 2: Second, do teams tend to preform better with older, experienced players or young, talented players. Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.
 ```{r}
 head(epl2) 
@@ -67,10 +69,17 @@ epl3 %>%
 epl2 %>%
   filter(GW38_Points > 1) %>%
   select(Teams, GW38_Points, GW38_Standing)
-
-
 ```
+Using both of these data sets, I will join them by name and create just one data set that is easiy to read. Then i will graph them to show if the average age of players on each team correlates with the amount of wins.
+
 *Question 3: Third, overall, do teams that spend more money correlate to their performance. Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart. 
+
+Need to find a more organized data set that shows the amount of money each soccer club spent in the league. Then, I will join that to the results of the ending of the season standing.
 
 *Question 4: Fourth, To be announced.
 
+**Conclusion**
+
+More analysis and question to come.
+
+*To be Determined
