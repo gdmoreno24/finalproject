@@ -12,6 +12,7 @@ library(ggplot2)
 library(tidyverse)
 library(readxl)
 library(tinytex)
+library(maptools)
 library(fivethirtyeight)
 knitr::opts_chunk$set(echo = FALSE, tidy = TRUE)
 police1 <- read.csv(file = here::here("police_data", "clean_data.csv"))
@@ -25,7 +26,9 @@ head(police1)
 head(police2)
 police2 %>%
   ggplot(aes(longitude, latitude, color = raceethnicity)) +
-      geom_point() 
+      borders("state") +
+      geom_point() +
+      coord_quickmap()
 ```
 
 ```{r}
@@ -38,6 +41,13 @@ police4 %>%
 ```{r}
 head(police4)
 police4 %>% 
-  ggplot(aes(gender, fill = body_camera)) +
+  ggplot(aes(gender, fill = manner_of_death)) +
   geom_bar()
 ```  
+
+```{r}
+police4 %>%
+  ggplot(aes(x = state, fill = state)) +
+  geom_bar() +
+  theme(legend.position = "none")
+```

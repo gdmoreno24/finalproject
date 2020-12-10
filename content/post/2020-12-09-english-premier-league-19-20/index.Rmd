@@ -31,20 +31,21 @@ glimpse(epl3)
 epl3 %>%
   summarise(avg_height = mean(height))
 
-epl3 %>%
-  select(name, position, height, weight, goals, games) %>%
-  filter(games >10, position != "Goalkeeper", goals > 1) %>%
-  ggplot(aes(x = goals, y = height)) +
-  geom_boxplot() +
-  geom_jitter() +
-  ylim(165,200) +
-  facet_wrap(~ position)
+#epl3 %>%
+#  select(name, position, height, weight, goals, games) %>%
+#  filter(games >10, position != "Goalkeeper", goals > 1) %>%
+#  ggplot(aes(x = goals, y = height)) +
+#  geom_boxplot() +
+# geom_jitter() +
+#  ylim(165,200) +
+# facet_wrap(~ position)
 
 epl3 %>%
   select(name, position, height, weight, goals, games) %>%
   filter(games >10, position != "Goalkeeper", goals > 1) %>%
   ggplot(aes(x = height, y = goals)) +
-  geom_boxplot() +
+  geom_vline(xintercept = 175.4, linetype = "dashed", color = "blue") +
+  geom_boxplot(fill = "purple") +
   geom_jitter() +
   xlim(165,200) +
   facet_wrap(~ position) 
