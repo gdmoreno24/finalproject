@@ -13,6 +13,7 @@ tags: [R, blogdown]
 
 <pre class="r"><code>library(here)
 library(ggplot2)
+library(patchwork)
 library(tidyverse)
 library(readxl)
 library(tinytex)
@@ -84,7 +85,7 @@ epl4 &lt;- read.csv(file = here::here(&quot;epl_data&quot;, &quot;players_1920_f
 <pre><code>##   avg_height
 ## 1   175.3985</code></pre>
 <pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 The boxplot graph above shows the data for each position. The blue dashed line shows the average height of the players in the English Premier League, which is 175.4 cm or 5’7 ft. So, the results show that taller players tend to score more as forwards, which is surprising to me, as I would think a bit shorter, more agile player would be more effective.</p>
@@ -246,9 +247,15 @@ The boxplot graph above shows the data for each position. The blue dashed line s
 ## 19   CHE          66             4
 ## 20   WHU          39            16</code></pre>
 <p>Using both of these data sets, I will join them by name and create just one data set that is easiy to read. Then i will graph them to show if the average age of players on each team correlates with the amount of wins.</p>
-<p>*Question 3: Third, overall, do teams that spend more money correlate to their performance. Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart.</p>
-<p>Need to find a more organized data set that shows the amount of money each soccer club spent in the league. Then, I will join that to the results of the ending of the season standing.</p>
-<p>*Question 4: Fourth, To be announced.</p>
+<p>#Question 3: Which player scores more goals per game?.
+Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart.</p>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:patchwork&#39;:
+## 
+##     align_plots</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+*Question 4: Fourth, To be announced.</p>
 <p><strong>Conclusion</strong></p>
 <p>More analysis and question to come.</p>
 <p>*To be Determined</p>

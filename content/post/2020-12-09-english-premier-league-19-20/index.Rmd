@@ -9,6 +9,7 @@ tags: [R, blogdown]
 ```{r, message=FALSE}
 library(here)
 library(ggplot2)
+library(patchwork)
 library(tidyverse)
 library(readxl)
 library(tinytex)
@@ -30,25 +31,25 @@ head(epl3)
 ```{r}
 epl3 %>%
   summarise(avg_height = mean(height))
+epl3 %>%
+  select(name, position, height, weight, goals, games) %>%
+  filter(games >10, position != "Goalkeeper", goals > 1) %>%
+  ggplot(aes(x = goals, y = height)) +
+  geom_boxplot(fill = "purple4") +
+  geom_hline(yintercept = 175.4, linetype = "dashed", color = "blue") +
+ geom_jitter() +
+  ylim(165,200) +
+ facet_wrap(~ position)
 
 #epl3 %>%
 #  select(name, position, height, weight, goals, games) %>%
 #  filter(games >10, position != "Goalkeeper", goals > 1) %>%
 #  ggplot(aes(x = goals, y = height)) +
-#  geom_boxplot() +
-# geom_jitter() +
-#  ylim(165,200) +
-# facet_wrap(~ position)
-
-epl3 %>%
-  select(name, position, height, weight, goals, games) %>%
-  filter(games >10, position != "Goalkeeper", goals > 1) %>%
-  ggplot(aes(x = height, y = goals)) +
-  geom_vline(xintercept = 175.4, linetype = "dashed", color = "blue") +
-  geom_boxplot(fill = "purple4") +
-  geom_jitter() +
-  xlim(165,200) +
-  facet_wrap(~ position) 
+#  geom_vline(xintercept = 175.4, linetype = "dashed", color = "blue") +
+#  geom_boxplot(fill = "purple4") +
+#  geom_jitter() +
+#  xlim(165,200) +
+#  facet_wrap(~ position) 
 ```
 The boxplot graph above shows the data for each position. The blue dashed line shows the average height of the players in the English Premier League, which is 175.4 cm or 5'7 ft. So, the results show that taller players tend to score more as forwards, which is surprising to me, as I would think a bit shorter, more agile player would be more effective.
 
@@ -72,10 +73,32 @@ epl2 %>%
 ```
 Using both of these data sets, I will join them by name and create just one data set that is easiy to read. Then i will graph them to show if the average age of players on each team correlates with the amount of wins.
 
-*Question 3: Third, overall, do teams that spend more money correlate to their performance. Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart. 
+#Question 3: Which player scores more goals per game?. 
+Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart. 
 
-Need to find a more organized data set that shows the amount of money each soccer club spent in the league. Then, I will join that to the results of the ending of the season standing.
+```{r}
+library(cowplot)
+g1 <- epl3 %>%
+  filter(goals > 1, position == "Forward") %>%
+  mutate(avg_goals_per_game = goals/ games) %>%
+  arrange(desc(avg_goals_per_game)) %>%
+  slice(1:8) %>%
+  ggplot(aes(x = name, y = avg_goals_per_game, fill = team)) +
+  geom_col() +
+  coord_flip() +
+  geom_text(aes(label = avg_goals_per_game), vjust = -0.5)
 
+g2 <- epl3 %>%
+  filter(goals > 1, position == "Forward") %>%
+  mutate(avg_goals_per_game = goals/ games) %>%
+  arrange(desc(goals)) %>%
+  slice(1:8) %>%
+  ggplot(aes(x = name, y = goals, fill = team)) +
+  geom_col() +
+  coord_flip() +
+  geom_text(aes(label = goals))
+g1 + g2
+```
 *Question 4: Fourth, To be announced.
 
 **Conclusion**

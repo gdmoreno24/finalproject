@@ -41,7 +41,7 @@ In the graph above, the points show where the killing was at exactly in United S
 police4 %>%
   ggplot(aes(x = state, fill = state)) +
   geom_bar() +
-#  facet_wrap(~ year) +
+  facet_wrap(~ date) +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(angle = 90)) +
   ggtitle("Pollice Killings by State 2015-2020")
@@ -96,8 +96,10 @@ As the results shown above by the graph, it tends to show that victim are mostly
 
 ```{r}
 police4 %>%
-  ggplot(aes(threat_level, fill = body_camera)) +
+  filter(race != "") %>%
+  ggplot(aes(threat_level, fill = threat_level)) +
   geom_bar() +
+ # facet_wrap(~ body_camera) +
   ggtitle("Threat Level To Police Officers") +
   xlab("Threat level of victim") +
   ylab("Number of Deaths per Threat Level")
