@@ -15,10 +15,12 @@ library(readxl)
 library(tinytex)
 library(fivethirtyeight)
 knitr::opts_chunk$set(echo = FALSE, tidy = TRUE)
-epl1 <- read.csv(file = here::here("epl_data", "epl2020.csv"))
 epl2 <- read.csv(file = here::here("epl_data", "EPL_19_20_GW_Timeseries.csv"))
 epl3 <- read.csv(file = here::here("epl_data", "epl_players_stats.csv"))
-epl4 <- read.csv(file = here::here("epl_data", "players_1920_fin.csv"))
+head(epl2)
+```
+```{r}
+head(epl3)
 ```
 For this project, I am examining the English Premier League statistics by players stats, like height/age compared to their respective position. For example, in the datasets "epl_players_stats.csv" and "players_1920_fin.csv" from FiveThirtyEight, the file goes into full detail about players like height, position, goals per game, goals given up, age, ect, so I will be examining if a player if more likely to succeed in this league based on their height or age. The "players_1920_fin.csv"" there were 22,502 observations and 35 Variables, and "epl_players_stats.csv" has 522 observations and 41 variables. The variable codes is a factor with multiple levels explaing what teams each player plays for and their statistics for the 19/20 season.
 
@@ -28,7 +30,7 @@ The other two datasets "EPL_19_20_GW_Timeseries.csv" and "epl2020.csv" go into d
 ```{r}
 head(epl3)
 ```
-```{r}
+```{r, echo=TRUE}
 epl3 %>%
   summarise(avg_height = mean(height))
 epl3 %>%
@@ -44,7 +46,7 @@ epl3 %>%
 epl3 %>%
   filter(games >5, position != "Goalkeeper", assists > 1) %>%
   ggplot(aes(x = assists, y = height)) +
-  geom_boxplot(fill = "purple4") +
+  geom_boxplot(fill = "skyblue2") +
   geom_hline(yintercept = 175.4, linetype = "dashed", color = "blue") +
   geom_jitter() +
   ylim(165,200) +
@@ -53,7 +55,7 @@ epl3 %>%
 epl3 %>%
   filter(games >5, motm > 1) %>%
   ggplot(aes(x = motm, y = height)) +
-  geom_boxplot(fill = "purple4") +
+  geom_boxplot(fill = "gold3") +
   geom_hline(yintercept = 175.4, linetype = "dashed", color = "blue") +
   geom_jitter() +
   ylim(165,200) +
@@ -63,16 +65,16 @@ The boxplot graph above shows the data for each position. The blue dashed line s
 
 #Question 2: What team had better player performance?
 Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.
-```{r}
+```{r, echo=TRUE}
 epl3 %>% 
   group_by(team) %>%
   summarise(total_motm = sum(motm)) %>%
   arrange(desc(total_motm)) %>%
- # slice(1:8) %>%
   ggplot(aes(team, total_motm, fill = team)) +
   geom_col() +
   geom_text(aes(label = total_motm)) +
-  coord_flip()
+  coord_flip() +
+  theme(legend.position = "none")
 
 epl3 %>%
   group_by(team) %>%
@@ -82,15 +84,24 @@ epl3 %>%
   ggplot(aes(team, avg_player_rating, fill = team)) +
   geom_col() +
   coord_flip() +
-  geom_text(aes(label = avg_player_rating))
+  geom_text(aes(label = avg_player_rating)) +
+  theme(legend.position = "none")
 ```
 
 
 #Question 3: Which player scored more goals per game?. 
 Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart. 
 
-```{r}
-library(cowplot)
+```{r, echo=TRUE}
+epl3 %>%
+  filter(position != "Goalkeeper") %>%
+  select(name, goals, position) %>%
+  group_by(position) %>%
+  summarise(total_goals = sum(goals)) %>%
+  ggplot(aes(position, total_goals, fill = position)) +
+  geom_col() +
+  theme(legend.position = "none")
+
 epl3 %>%
   mutate(avg_goals_per_game = goals/ games) %>%
   arrange(desc(avg_goals_per_game)) %>%
@@ -117,10 +128,72 @@ epl3 %>%
   ggtitle("19/20 Top Goalscorers") +
   theme(plot.title = element_text(hjust = 0.5))
 
+epl3 %>%
+  group_by(team) %>%
+  summarise(total_goals = sum(goals)) %>%
+  ggplot(aes(team, total_goals, fill = team)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  geom_text(aes(label = total_goals)) +
+  theme(legend.position = "none")
 ```
 
+# Question 4: Which players have the most assists?
+```{r}
+epl3 %>%
+  filter(position != "Goalkeeper") %>%
+  select(name, assists, position) %>%
+  group_by(position) %>%
+  summarise(total_assists = sum(assists)) %>%
+  ggplot(aes(position, total_assists, fill = position)) +
+  geom_col() +
+  theme(legend.position = "none")
+
+epl3 %>%
+  mutate(avg_assists_per_game = assists/ games) %>%
+  arrange(desc(avg_assists_per_game)) %>%
+  slice(1:8) %>%
+  ggplot(aes(x = name, y = avg_assists_per_game, fill = team)) +
+  geom_col() +
+  coord_flip() +
+  geom_text(aes(label = avg_assists_per_game), vjust = -0.5) +
+  xlab("Name of Player") +
+  ylab("Assists per Game Average") +
+  ggtitle("Top Assists per Game Ratio") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+epl3 %>%
+  mutate(avg_assists_per_game = assists/ goals) %>%
+  arrange(desc(assists)) %>%
+  slice(1:8) %>%
+  ggplot(aes(x = name, y = assists, fill = team)) +
+  geom_col() +
+  coord_flip() +
+  geom_text(aes(label = assists)) +
+  xlab("Name of Player") +
+  ylab("Number of Assists") +
+  ggtitle("19/20 Top Assists") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+epl3 %>%
+  group_by(team) %>%
+  summarise(total_assists = sum(assists)) %>%
+  ggplot(aes(team, total_assists, fill = team)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  geom_text(aes(label = total_assists)) +
+  theme(legend.position = "none")
+```
 #Conclusion
 
+```{r}
+epl2 %>%
+  select(GW38_Points, GW38_Standing, Teams) %>%
+  arrange(desc(GW38_Points)) %>%
+  ggplot(aes(Teams, GW38_Points, fill = Teams)) +
+  geom_col() +
+  theme(legend.position = "none")
+```
 More analysis and question to come.
 
 *To be Determined
