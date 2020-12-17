@@ -78,7 +78,7 @@ Do team that spend more money obtaining and paying more players translate to mor
 
 ```{r}
 library(cowplot)
-g1 <- epl3 %>%
+epl3 %>%
   filter(goals > 1, position == "Forward") %>%
   mutate(avg_goals_per_game = goals/ games) %>%
   arrange(desc(avg_goals_per_game)) %>%
@@ -88,7 +88,7 @@ g1 <- epl3 %>%
   coord_flip() +
   geom_text(aes(label = avg_goals_per_game), vjust = -0.5)
 
-g2 <- epl3 %>%
+epl3 %>%
   filter(goals > 1, position == "Forward") %>%
   mutate(avg_goals_per_game = goals/ games) %>%
   arrange(desc(goals)) %>%
@@ -97,7 +97,7 @@ g2 <- epl3 %>%
   geom_col() +
   coord_flip() +
   geom_text(aes(label = goals))
-g1 + g2
+
 ```
 *Question 4: Fourth, To be announced.
 
