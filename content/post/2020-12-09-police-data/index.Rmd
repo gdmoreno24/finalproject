@@ -24,7 +24,8 @@ head(police1)
 Using data obtained from FiveThirtyEight, collected from The Washington Post and the census, the next dataset I am going to analyze the data of police killings and deaths in the United States, from 2015-2020. The variables in the files include the date, state, name of deceased, race, gender, ect. The US population data is from the US Census Bureau website. There are 22,800 observations and 10 variables in the "clean_data.csv" file, which go into depth about police deaths. The "police_killings.csv" goes into depth about the police killing, which has 467 observations, and 34 variables. On the last dataset, the data is a collected from multiple police station from the biggest cities in the United States. With all the different data available, there should be enough data for me to analyze. 
 In this project, I am going to look through data which explores fatal shootings by on duty police officers since 2015. Analyzing this data, I will be asking a variety of questions to help further understand my knowledge on police killings. As I continue to ask many questions, I will try to create a vizualation of the intrepetations I will gather. I will be making graphs using ggplot in R.
 
-*Question 1: First, where do the police killings tend to happen more frequently. Using the "police_killings.csv" data I will analyze where these police killings tend to happen more frequently, like is there a state with notably more killings than the rest. I will preform this analysis with grouping, filtering, and creating a spacial map with ggplot to visualize my analysis.
+# Question 1: Where do the police killings tend to happen more frequently. 
+Using the "police_killings.csv" data I will analyze where these police killings tend to happen more frequently, like is there a state with notably more killings than the rest. I will preform this analysis with grouping, filtering, and creating a spacial map with ggplot to visualize my analysis.
 ```{r}
 police2 %>%
   ggplot(aes(longitude, latitude, color = raceethnicity)) +
@@ -33,19 +34,24 @@ police2 %>%
       coord_quickmap() +
       ggtitle("Pollice Killings in 2015")
 ```
+
 In the graph above, the points show where the killing was at exactly in United States in the year of 2015 alone. I plotted the longitude on the x axis and latitude on the y axis, and the results shows that there were more police killings on the eastern part of the United States compared to the west.
+
 ```{r}
 police4 %>%
   ggplot(aes(x = state, fill = state)) +
   geom_bar() +
+#  facet_wrap(~ year) +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(angle = 90)) +
   ggtitle("Pollice Killings by State 2015-2020")
 ```
+
 In the graph above, I was wanting to answer the question of which states tend to have the most police killings. From the results, it shows that California has significantly more police killings than any other state in the United States. This could be of many reason, for example population, size of police task force, and even the crime rate. More analysis on this to come in the near future.
 
 
-*Question 2: Second, do a certain race tend to be killed more? Again, using the "police_killings.csv" data, I will group the police killings by race and compare the number of killings by race. Using this data I will be analyzing which gender tends to be killed more often by police officers. Also, I will being doing this for both police killing and police deaths, and I will be visualizing my findings with a bar chart for easy comparison.
+# Question 2: Do a certain race tend to be killed more? 
+Again, using the "police_killings.csv" data, I will group the police killings by race and compare the number of killings by race. Using this data I will be analyzing which gender tends to be killed more often by police officers. Also, I will being doing this for both police killing and police deaths, and I will be visualizing my findings with a bar chart for easy comparison.
 ```{r}
 police4 %>%
   filter(race != "") %>%
@@ -62,7 +68,8 @@ police4 %>%
 ```
 Using the data set, the results tend to show that white's are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female This could be of many factors that I am yet to draw conclusions from. Using these results I will be comparing the percent population of each race in the United States to the percent of police killings by race. So, that will answer if there are more white people getting killed because there are more white people in the United States. Therefore, we are going to be able to tell which race gets killed by the police based off the percent of the population that race makes up in the United States. I will be doing this for both police killings and police deaths since 2015. The data above excluded blank/unknown spaces in the dataset.
 
-*Question 3: Third, how are people getting killed and what is the death cause by. Using the dataset, I will be asking questions like: if the victim was armed, was there signs of mental illness, the threat level of victim, and if the victim was fleeing. I will be making visualizations using ggplot bar graphs to help visualize my results.
+#Question 3: How are people getting killed and what is the death cause by. 
+Using the dataset, I will be asking questions like: if the victim was armed, was there signs of mental illness, the threat level of victim, and if the victim was fleeing. I will be making visualizations using ggplot bar graphs to help visualize my results.
 
 ```{r}
 police4 %>%
