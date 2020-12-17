@@ -169,125 +169,103 @@ head(epl2)</code></pre>
 ## 4          0
 ## 5          0
 ## 6          0</code></pre>
-<p>For this project, I am examining the English Premier League statistics by players stats, like height/age compared to their respective position. For example, in the datasets “epl_players_stats.csv” and “players_1920_fin.csv” from FiveThirtyEight, the file goes into full detail about players like height, position, goals per game, goals given up, age, ect, so I will be examining if a player if more likely to succeed in this league based on their height or age. The “players_1920_fin.csv”" there were 22,502 observations and 35 Variables, and “epl_players_stats.csv” has 522 observations and 41 variables. The variable codes is a factor with multiple levels explaing what teams each player plays for and their statistics for the 19/20 season.</p>
-<p>The other two datasets “EPL_19_20_GW_Timeseries.csv” and “epl2020.csv” go into detail for the 19/20 statitics for each team in the English Premier League. In these data sets, we can find the results week by week of each team in the EPL and variable like win’s, loss’s, ties, points gained, goals given up, goals scored, ect.. The “EPL_19_20_GW_Timeseries.csv” has 1,048,575 observations and 77 variable and the “epl2020.csv” data set consits of 576 observations and 45 variables. These files have many levels going into full detail week by week, so i will have many outcomes to analyze.</p>
-<p>*Question 1: First, do soccer players score more goals based on their height? I will analyze each players statistics for the 19/20 season based off their heights. Go into detail about if tall players score more goals than short players or vise versa. The measurement will be based off the overall median height of every player in the league. To test this, I will be putting the data organized in a data visualization like a scatter plot.</p>
-<pre><code>##    id            name nationality      team team_id age height weight
-## 1 816 Kevin De Bruyne          be  Man City     875  29    181     68
-## 2 622 Bruno Fernandes          pt   Man Utd     314  26    179     69
-## 3 812 Ricardo Pereira          pt Leicester     652  26    175     70
-## 4 287    Adama Traoré          es    Wolves     518  24    178     72
-## 5 158    Riyad Mahrez          dz  Man City     875  29    179     67
-## 6 576      Sadio Mané          sn Liverpool     339  28    175     69
-##     position             roles games exit_on_sub minutes rating_m goals assists
-## 1 Midfielder    M_C,M_L,M_R,FW    35           3    2800     7.97    13      20
-## 2 Midfielder       M_C,M_L,M_R    14           0    1223     7.73     8       7
-## 3   Defender       D_L,D_R,M_R    28           0    2520     7.50     3       2
-## 4    Forward        M_L,M_R,FW    37          10    2608     7.49     4       9
-## 5    Forward    AM_C,AM_L,AM_R    33          12    1942     7.48    11       9
-## 6    Forward AM_C,AM_L,AM_R,FW    35           4    2756     7.45    18       7
-##   yel_cards red_cards shots_m aerials_won_m motm successful_passes_pt
-## 1         3         0     2.8           0.5   10                 81.5
-## 2         2         0     3.1           0.2    3                 75.7
-## 3         1         0     0.6           1.5    2                 78.9
-## 4         1         0     1.2           1.2    6                 74.4
-## 5         0         0     2.2           0.3    3                 90.1
-## 6         3         0     2.2           1.2    7                 81.6
-##   key_passes_m dribbles_won_m fouls_given_m offside_m dispossessed_m passes_m
-## 1          3.9            1.4           0.8       0.1            0.9     54.5
-## 2          2.1            1.1           1.0       0.1            0.9     55.5
-## 3          1.0            2.1           1.3       0.0            1.1     56.1
-## 4          1.3            5.0           2.1       0.2            1.8     19.2
-## 5          1.8            1.6           0.9       0.4            1.0     33.2
-## 6          1.7            2.0           1.5       0.4            1.6     31.5
-##   accurate_crosses_m accurate_long_passes_m accurate_through_passes_m tackles_m
-## 1                2.1                    3.5                       0.4       1.3
-## 2                1.0                    3.3                       0.3       1.6
-## 3                0.3                    2.1                       0.1       4.2
-## 4                1.2                    0.2                       0.1       0.9
-## 5                0.6                    1.7                       0.2       0.8
-## 6                0.3                    1.0                       0.1       1.3
-##   interceptions_m fouls_m clearances_m dribbled_past_m owm_goals
-## 1             0.5     0.7          0.7             1.4         0
-## 2             0.8     0.6          1.0             2.4         0
-## 3             1.8     1.6          2.6             1.9         0
-## 4             0.4     1.1          0.4             0.4         0
-## 5             0.5     0.4          0.2             0.8         0
-## 6             0.4     1.3          0.2             0.8         0
-##   gk_in_goal_area_saves_m gk_inside_box_saves_m gk_outside_box_saves_m
-## 1                       0                     0                      0
-## 2                       0                     0                      0
-## 3                       0                     0                      0
-## 4                       0                     0                      0
-## 5                       0                     0                      0
-## 6                       0                     0                      0
-##   gk_saves_m
-## 1          0
-## 2          0
-## 3          0
-## 4          0
-## 5          0
-## 6          0</code></pre>
+<p>For this project, I am examining the 2019-2020 English Premier League statistics for individual players and teams. In the dataset “epl_players_stats.csv” from FiveThirtyEight, the file goes into full detail about players, listing data like height, position, goals, age, assists, ect. So I will be examining multiple attribuites of players around the league. In the dataset “EPL_19_20_GW_Timeseries.csv”, also collected from FiveThirtyEight, consists of week by week standings and how many points each team aquired in their respective week. In “EPL_19_20_GW_Timeseries.csv” there were 1,048,575 observations and 77 variables, and in “epl_players_stats.csv”, there are 522 observations and 41 variables. The variables and observations are a factor with multiple levels which explains what teams each player plays for and their statistics for they achieved in the 19/20 English Premier League season.</p>
+<div id="do-players-height-play-a-role-in-their-success" class="section level1">
+<h1>Do player’s height play a role in their success?</h1>
+<p>In order to answer this question, I will be comparing the players height to 3 different variables: goals scored, assists, and Man of the Match awards. I will analyze each players statistics for the 19/20 season based off their heights. Using a boxplot, the results will be given a visualization of the results I gather with the data. Also, I will apply a facet by position, giving us a better visualization of player results by position.</p>
+<p>The first graph, is comparing the height of players, not including goalkeepers, to how many goals they scored during the season. I filtered out any player that plays the goalkeeper position and keeping forwards, defenders, and midfielders that have played in at least 5 games and scored at least 1 goal.</p>
 <pre class="r"><code>epl3 %&gt;% summarise(avg_height = mean(height))</code></pre>
 <pre><code>##   avg_height
 ## 1   175.3985</code></pre>
 <pre class="r"><code>epl3 %&gt;% select(name, position, height, weight, goals, games) %&gt;% filter(games &gt; 
     5, position != &quot;Goalkeeper&quot;, goals &gt; 1) %&gt;% ggplot(aes(x = goals, y = height)) + 
     geom_boxplot(fill = &quot;purple4&quot;) + geom_hline(yintercept = 175.4, linetype = &quot;dashed&quot;, 
-    color = &quot;blue&quot;) + geom_jitter() + ylim(165, 200) + facet_wrap(~position)</code></pre>
+    color = &quot;blue&quot;) + geom_jitter() + ylim(165, 200) + facet_wrap(~position) + ylab(&quot;Height of Players (cm)&quot;) + 
+    xlab(&quot;Goals Scored&quot;) + ggtitle(&quot;Goals Scored vs Height&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
 <pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
 <pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The blue dashed line shows the average height of players excluding goalkeepers, which is 175.4 cm or 5’7 ft. So, the results show that taller players tend to score more than forwards, which is not as surprising. Usually shorter players that are fast and agile compared to taller players would score more, but not according to the data. The results could be justified because goals in a game could come from a set piece, which gives taller players an advantage over shorter players, allowing them to score headers from corner kicks and free kicks.</p>
+<p>In the following graphs I applied the same requirements, except this time the graph will analyze assists vs height of players.</p>
 <pre class="r"><code>epl3 %&gt;% filter(games &gt; 5, position != &quot;Goalkeeper&quot;, assists &gt; 1) %&gt;% ggplot(aes(x = assists, 
     y = height)) + geom_boxplot(fill = &quot;skyblue2&quot;) + geom_hline(yintercept = 175.4, 
-    linetype = &quot;dashed&quot;, color = &quot;blue&quot;) + geom_jitter() + ylim(165, 200) + facet_wrap(~position)</code></pre>
+    linetype = &quot;dashed&quot;, color = &quot;blue&quot;) + geom_jitter() + ylim(165, 200) + facet_wrap(~position) + 
+    ylab(&quot;Height of Players (cm)&quot;) + xlab(&quot;Assists&quot;) + ggtitle(&quot;Assists vs Height&quot;) + 
+    theme(plot.title = element_text(hjust = 0.5))</code></pre>
 <pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
 <pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
-<pre class="r"><code>epl3 %&gt;% filter(games &gt; 5, motm &gt; 1) %&gt;% ggplot(aes(x = motm, y = height)) + geom_boxplot(fill = &quot;gold3&quot;) + 
-    geom_hline(yintercept = 175.4, linetype = &quot;dashed&quot;, color = &quot;blue&quot;) + geom_jitter() + 
-    ylim(165, 200) + facet_wrap(~position)</code></pre>
+<pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>According from the results shown in the boxplot graph, again players above the average height tend to preform better in the assist column too. Most of the black dots appear to be above the blue dotted line. There seems to be one midfielder that has provided more assits’ than any other player respectively. Even the player with the most assist is above the average height of players, measuring at about 182 centimeters tall.</p>
+<p>In the next graph, the boxplot will be comparing man of the match awards vs height of players. The Man of the Math award is given to the single best player of each game based on their performance. The requirements from previous graphs apply to this graph.</p>
+<pre class="r"><code>epl3 %&gt;% filter(games &gt; 5, motm &gt; 1, position != &quot;Goalkeeper&quot;) %&gt;% ggplot(aes(x = motm, 
+    y = height)) + geom_boxplot(fill = &quot;gold3&quot;) + geom_hline(yintercept = 175.4, 
+    linetype = &quot;dashed&quot;, color = &quot;blue&quot;) + geom_jitter() + ylim(165, 200) + facet_wrap(~position) + 
+    ylab(&quot;Height of Players (cm)&quot;) + xlab(&quot;Man of the Match awards recieved&quot;) + ggtitle(&quot;MOTM vs Height&quot;) + 
+    theme(plot.title = element_text(hjust = 0.5))</code></pre>
 <pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-3.png" width="672" />
-The boxplot graph above shows the data for each position. The blue dashed line shows the average height of the players in the English Premier League, which is 175.4 cm or 5’7 ft. So, the results show that taller players tend to score more as forwards, which is surprising to me, as I would think a bit shorter, more agile player would be more effective.</p>
-<p>#Question 2: What team had better player performance?
-Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Finally, the results of this graph answers the question originally asked. In the boxplot shown above, the majority of the points, representing man of the match awards, tend to be above the blue dotted line. So, taller players are more likly to score more goals, provide more assist, and recieve the man of the match award compared to shorter players under the height of 5’7ft.</p>
+<p>#What teams have better player performance?
+In order to answer this question I will analyze players from each team according to their match rating average throughout the season and the amount of Man of the Match awards received by each team. Using column charts, I will group players by their teams and then get the average player rating of each athlete and count all the MOTM awards, and then will compare the results to other teams in the Premier League to figure out which team had the best prforming players.</p>
+<p>In this first graph, I compared the total amount of Man of the Match (MOTM) awards per team.</p>
 <pre class="r"><code>epl3 %&gt;% group_by(team) %&gt;% summarise(total_motm = sum(motm)) %&gt;% arrange(desc(total_motm)) %&gt;% 
     ggplot(aes(team, total_motm, fill = team)) + geom_col() + geom_text(aes(label = total_motm)) + 
-    coord_flip() + theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+    coord_flip() + theme(legend.position = &quot;none&quot;) + ylab(&quot;Name of Team&quot;) + xlab(&quot;Number of MOTM awards recieved&quot;) + 
+    ggtitle(&quot;MOTM Awards recieved by Team&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>The results from the graph shows that players from Liverpool accumulated the most MOTM awards throughout the 19/20. Liverpool collected 32 MOTM awards, which shows great player performances. In the EPL, each teams plays a total of 38 games, meaning out of the 38 games Liverpool played, 32 out of those games a player from their team received the award. Roughly, in the total games they played, a player from Liverpool received the award 89% of the time. Chelsea, Manchester City, and Manchester United followed no too far behind.</p>
+<p>In the next graph, the average player rating of each team is compared to other teams around the league.</p>
 <pre class="r"><code>epl3 %&gt;% group_by(team) %&gt;% summarise(avg_player_rating = mean(rating_m)) %&gt;% arrange(desc(avg_player_rating)) %&gt;% 
     slice(1:10) %&gt;% ggplot(aes(team, avg_player_rating, fill = team)) + geom_col() + 
-    coord_flip() + geom_text(aes(label = avg_player_rating)) + theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
-<p>#Question 3: Which player scored more goals per game?.
-Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart.</p>
+    coord_flip() + geom_text(aes(label = avg_player_rating)) + theme(legend.position = &quot;none&quot;) + 
+    ylab(&quot;Name of Team&quot;) + xlab(&quot;Average Player Rating&quot;) + ggtitle(&quot;Average Player Rating by Team&quot;) + 
+    theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>In the graph, only the top 10 teams with the best average player rating was plotted. From the results shown above, the club of Manchester City averaged the highest player rating throughout the season compared to teams around the league. The scale is based out of 10 and is given based on player performance like goals given up, goals scored, tackles lost, ect. So, data shows that Man City led the league, but Liverpool and other follwed shortly behind. Data has tend to show that players from Manchester City and Liverpool preform better in games throughout the season.</p>
+<p>#Which players have scored more goals throughout the season?.
+To figure out this question, I made 4 different graphs to summarize which players tend to scoring more. In the following graphs, the goalkeeper was excluded because it is very unlikely for a goalkeeper to score in games. I asked multiple questions to acquire the most information on which player scores the most. Asking questions like: which position tends to score the most, who are the top goal scorers, what is the highest goals scored per game average, and what teams score the most.</p>
+<p>In this column graph, I summarised all the goals scored based off the position played by each player.</p>
 <pre class="r"><code>epl3 %&gt;% filter(position != &quot;Goalkeeper&quot;) %&gt;% select(name, goals, position) %&gt;% group_by(position) %&gt;% 
     summarise(total_goals = sum(goals)) %&gt;% ggplot(aes(position, total_goals, fill = position)) + 
-    geom_col() + theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<pre class="r"><code>epl3 %&gt;% mutate(avg_goals_per_game = goals/games) %&gt;% arrange(desc(avg_goals_per_game)) %&gt;% 
-    slice(1:8) %&gt;% ggplot(aes(x = name, y = avg_goals_per_game, fill = team)) + geom_col() + 
-    coord_flip() + geom_text(aes(label = avg_goals_per_game), vjust = -0.5) + xlab(&quot;Name of Player&quot;) + 
-    ylab(&quot;Goals per Game Average&quot;) + ggtitle(&quot;Top Goals per Game Ratio&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+    geom_col() + geom_text(aes(label = total_goals)) + theme(legend.position = &quot;none&quot;) + 
+    ylab(&quot;Total Goals Scored&quot;) + xlab(&quot;Position&quot;) + ggtitle(&quot;Number of Goals Scored by Position&quot;) + 
+    theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>The graph goes into detail of how many goals each position scored during the season. To no surprise, forwards score the most goals, scoring 587 goals. Forwards goal scoring made up for about 53% of the total goals. But which player is the highest goal scorer?</p>
 <pre class="r"><code>epl3 %&gt;% mutate(avg_goals_per_game = goals/games) %&gt;% arrange(desc(goals)) %&gt;% slice(1:8) %&gt;% 
     ggplot(aes(x = name, y = goals, fill = team)) + geom_col() + coord_flip() + geom_text(aes(label = goals)) + 
     xlab(&quot;Name of Player&quot;) + ylab(&quot;Number of Goals&quot;) + ggtitle(&quot;19/20 Top Goalscorers&quot;) + 
     theme(plot.title = element_text(hjust = 0.5))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>In the graph shown above, I gatherd the top 8 players with the most goal scored in the 19/20 season. Jamie Vardy that plays for Leicester City was the top goalscorer of the season. Also from the results shown, it is important to notice that 2 players from Liverpool are on the top 8 goalscorers, no other team had more than one player in the top 8. The results above are shown for goals all throughout the season, meaning that players sometimes take games off to rest or if their injured. So, the data does not show which player was the most efficient goalscorer.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Even though Jamie Vardy was the top goal scorer for the season, he was not the most efficient goal scorer. In the graph above, I mutated the data from the dataset to figure out the ration of goals scored per game played. So, the ratios above portray the goals scored divided by the amount of games played throughout the season. In this case, Sergio Aguero of Manchester City came ontop of any other player, scoring an average of .67 goals per game. Sergio was not to be seen in the previous graph, this could be cause by potential injuries making him miss games. Regardless, the results show two Manchester City players placed in the top 8, while Liverpool and the other teams had only one player place.</p>
+<p>In the final graph of this question, I grouped all the players to their team and added up all the goals each team scored throughout the 2019/2020 season. Then, comparing to other teams to visualuze which team scored the most goals.</p>
 <pre class="r"><code>epl3 %&gt;% group_by(team) %&gt;% summarise(total_goals = sum(goals)) %&gt;% ggplot(aes(team, 
     total_goals, fill = team)) + geom_col() + theme(axis.text.x = element_text(angle = 90)) + 
-    geom_text(aes(label = total_goals)) + theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
-<div id="question-4-which-players-have-the-most-assists" class="section level1">
-<h1>Question 4: Which players have the most assists?</h1>
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-7-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-7-3.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-7-4.png" width="672" />
-#Conclusion</p>
+    geom_text(aes(label = total_goals)) + theme(legend.position = &quot;none&quot;) + ylab(&quot;Total Goals Scored&quot;) + 
+    xlab(&quot;Name of Team&quot;) + ggtitle(&quot;Total Goals Scored by Team&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>The results calculated above show that again, Manchester City and Liverpool. The team of Mancherster City came out on top of any other team, scoring a total of 100 goals throughout the course of just 38 games, meaning they averaged about 2.63 goals per game. They were clear 17 goals, as the closest team to them was Liverpool with a total of 83 goals.</p>
+</div>
+<div id="which-players-have-provided-more-assits-throughout-the-season" class="section level1">
+<h1>Which players have provided more assits throughout the season?</h1>
+<p>Similar to before, to figure out this question I made 4 different graphs to summarize which players tend to assist more. Alike to goals, in the following graphs I asked multiple questions to acquire the most information on which players tend to assist the most. I used the same strategic approach, but this time using assists to compare players around the league.</p>
+<p>First, which position is more in favor of assiting more?
+<img src="index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>This time around, the data does not seemed to be skewed to one position as before. Midfielders are more inclined to provide assists than any other position. This is because since midfielder have to support the forwards in scoring, they often create plays to get the ball to their forwards. Nevertheless, forwards and defenders are not too far behind in assists.</p>
+<p>Which players have the most assists on the season?
+<img src="index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>In the aspect of having more assists, Kevin De Bruyne is far ahead of any other player, leading the leagues in assists with 20. In the graph above I calculated how many assists each player had and compared them among eachother. There seems to be a trend of of Manchester City and Liverpool players leading the charts in MOTM awards, goals, and now assists. Manchester has 3 of the 8 top assisters in the league, and shortly behind is Liverpool with 2 players in the top 8.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Kevin De Bruyne, again, leads the league in assists, but this time he is the most efficient player for assist. For this graph, I used the data from the datasets and calculated the average of assists to games played for each player, and the top 8 best ration are plotted above. Manchester City and Liverpool again have the most players in the top 8 of this category, with two each. Both of these teams have the top assisters, but do they also lead the league in assists?</p>
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>In the column graph above shows both Liverpool and Man City lead the rest of the league in assists, with the closest behind more than 20 assists. Both teams managed to achieve 69 assists throughout the season, averaging 1.82 assists per game.</p>
+<p>#Conclusion</p>
+<p>In conclusion, data from the 2019/2020 showed that taller players tended to preform better all around. Also, from this analysis, we learned players from Liverpool and Manchester City lead the charts in almost every category. These teams dominated all throughout the season, scoring the most goals receiving the most MOTM awards, and achieving the most assists. Each team consistently managed to have almost two players in the top 8 of assists and goals. Through data visualization, although some players show to have the most goals or assists, they might not be the most efficient. Even when they lead in these categories, usually another player obtained a better ratio goals/assists per game. Both of these dominated the league, but in the end, Liverpool came out on top as champions, racking up 99 points. Leaving them the sole leader after 38 games, leaving Manchester City 18 points behind.</p>
 <pre><code>## Warning: Removed 1048555 rows containing missing values (position_stack).</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
-More analysis and question to come.</p>
-<p>*To be Determined</p>
+<pre><code>## Warning: Removed 1048555 rows containing missing values (geom_text).</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
