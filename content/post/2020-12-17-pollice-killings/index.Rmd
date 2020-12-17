@@ -1,6 +1,6 @@
 ---
 title: Pollice Killings
-author: ~
+author: ~ Gerardo Moreno
 date: '2020-12-17'
 slug: pollice-killings
 categories: [Police, R, Data Science]
