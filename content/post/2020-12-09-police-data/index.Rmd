@@ -74,9 +74,9 @@ police4 %>%
   geom_bar() +
   xlab("Gender of Victim") +
   ylab("Number of Fatal Deaths") +
-  ggtitle("Fatal Police Killings by Gender")
+  ggtitle("Fatal Police Killings by Gender") 
 ```
-The variable for the graphs above go as follows: M-Male, F-Female, W-White, B-Black, H-Hispanic, A-American Native, S-Asian,and O-Unknown. Using the data set, the results tend to show that white's are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female. This could be of many factors that I am unable to draw conclusions from at the time. The data above included blank/unknown spaces in the dataset, so I had to filter those unknown spaces to better visualize my findings. The answer that there are more white's getting killed might be because there are more white people in the United States. Therefore, we are unable to tell which race gets killed by the police more often based off the percent of race makes up in the United States. Additionally, the rate of fatal police shootings among certain race could be much higher than that for any other ethnicity. Though, it is undeniable that men tend to be killed far more often than women from police officers.
+The variable for the graphs above go as follows: M-Male, F-Female, W-White, B-Black, H-Hispanic, A-American Native, S-Asian,and O-Unknown. Using the data set, the results tend to show that white's are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female. This could be of many factors that I am unable to draw conclusions from at the time. The data above included blank/unknown spaces in the dataset, so I had to filter those unknown spaces to better visualize my findings. The answer that there are more white's getting killed might be because there are more white people in the United States. Therefore, we are unable to tell which race gets killed by the police more often based off the percent of race makes up in the United States. Additionally, the rate of fatal police shootings among certain race could be much higher than that for any other ethnicity. Regardless, it is undeniable that men tend to be killed far more often than women from police officers.
 
 #How are victims getting killed? 
 
