@@ -85,177 +85,27 @@ epl4 &lt;- read.csv(file = here::here(&quot;epl_data&quot;, &quot;players_1920_f
 <pre><code>##   avg_height
 ## 1   175.3985</code></pre>
 <pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
-<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-3.png" width="672" />
 The boxplot graph above shows the data for each position. The blue dashed line shows the average height of the players in the English Premier League, which is 175.4 cm or 5’7 ft. So, the results show that taller players tend to score more as forwards, which is surprising to me, as I would think a bit shorter, more agile player would be more effective.</p>
-<p>*Question 2: Second, do teams tend to preform better with older, experienced players or young, talented players. Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.</p>
-<pre><code>##   Teams GW1_Points GW1_Standing GW2_Points GW2_Standing GW3_Points GW3_Standing
-## 1   MCI          3            1          4            3          7            2
-## 2   MUN          3            2          4            4          4            5
-## 3   LIV          3            3          6            1          9            1
-## 4   BHA          3            4          4            5          4            8
-## 5   BUR          3            5          3           10          4            6
-## 6   TOT          3            6          4            6          4            7
-##   GW4_Points GW4_Standing GW5_Points GW5_Standing GW6_Points GW6_Standing
-## 1         10            2         10            2         13            2
-## 2          5            8          8            4          8            8
-## 3         12            1         15            1         18            1
-## 4          4           16          5           16          6           15
-## 5          4           12          5           14          8            9
-## 6          5            9          8            3          8            7
-##   GW7_Points GW7_Standing GW8_Points GW8_Standing GW9_Points GW9_Standing
-## 1         16            2         16            2         19            2
-## 2          9           10          9           12         10           14
-## 3         21            1         24            1         25            1
-## 4          6           16          9           14          9           16
-## 5          9           11         12            7         12            8
-## 6         11            6         11            9         12            7
-##   GW10_Points GW10_Standing GW11_Points GW11_Standing GW12_Points GW12_Standing
-## 1          22             2          25             2          25             4
-## 2          13             7          13            10          16             7
-## 3          28             1          31             1          34             1
-## 4          12            14          15             8          15            11
-## 5          12            13          12            14          15            10
-## 6          12            11          13            11          14            14
-##   GW13_Points GW13_Standing GW14_Points GW14_Standing GW15_Points
-## 1          28             3          29             3          32
-## 2          17             9          18             9          21
-## 3          37             1          40             1          43
-## 4          15            12          15            16          18
-## 5          18             7          18            10          18
-## 6          17            10          20             5          20
-##   GW15_Standings GW16_Points GW16_Standing GW17_Points GW17_Standing
-## 1              3          32             3          35             3
-## 2              6          24             5          25             6
-## 3              1          46             1          49             1
-## 4             13          19            12          20            13
-## 5             12          18            13          21            12
-## 6              8          23             7          26             5
-##   GW18_Points GW18_Standing GW19_Points GW19_Standing GW20_Points GW20_Standing
-## 1          38             3          38             3          41             3
-## 2          25             8          28             8          31             5
-## 3          49             1          52             1          55             1
-## 4          20            13          20            15          23            14
-## 5          24            10          24            12          24            13
-## 6          26             7          29             6          30             6
-##   GW21_Points GW21_Standing GW22_Points GW22_Standing GW23_Points GW23_Standing
-## 1          44             3          47             2          48             2
-## 2          31             5          34             5          34             5
-## 3          58             1          61             1          64             1
-## 4          24            14          24            14          25            15
-## 5          24            15          24            15          27            14
-## 6          30             6          30             8          31             8
-##   GW24_Points GW24_Standing GW25_Points GW25_Standing GW26_Points GW26_Standing
-## 1          51             2          51             2          54             2
-## 2          34             5          35             7          38             7
-## 3          70             1          73             1          76             1
-## 4          25            15          26            15          27            15
-## 5          30            13          31            11          34            11
-## 6          34             6          37             5          40             5
-##   GW27_Points GW27_Standing GW28_Points GW28_Standing GW29_Points GW29_Standing
-## 1          57             2          57             2          57             2
-## 2          41             5          42             5          45             5
-## 3          79             1          79             1          82             1
-## 4          28            15          28            15          29            15
-## 5          37            10          38             9          39            10
-## 6          40             6          40             7          41             8
-##   GW30_Points GW30_Standing GW31_Points GW31_Standing GW32_Points GW32_Standing
-## 1          63             2          63             2          66             2
-## 2          46             5          49             5          52             5
-## 3          83             1          86             1          86             1
-## 4          32            15          33            15          33            15
-## 5          39            11          42            11          45            10
-## 6          42             8          45             7          45             9
-##   GW33Points GW33_Standing GW34_Points GW34_Standing GW35_Points GW35_Standing
-## 1         66             2          69             2          72             2
-## 2         55             5          58             5          59             5
-## 3         89             1          92             1          93             1
-## 4         33            15          36            15          36            15
-## 5         46            10          49            10          50            10
-## 6         48             8          49             9          52             8
-##   GW36_Points GW36_Standing GW37_Points GW37_Standing GW38_Points GW38_Standing
-## 1          75             2          78             2          81             2
-## 2          62             5          63             3          66             3
-## 3          93             1          96             1          99             1
-## 4          37            16          38            16          41            15
-## 5          51            10          54             9          54            10
-## 6          55             7          58             7          59             6</code></pre>
-<pre><code>##    Teams GW38_Points GW38_Standing
-## 1    MCI          81             2
-## 2    MUN          66             3
-## 3    LIV          99             1
-## 4    BHA          41            15
-## 5    BUR          54            10
-## 6    TOT          59             6
-## 7    ARS          56             8
-## 8    BOU          34            18
-## 9    SHU          54             9
-## 10   CRY          43            14
-## 11   EVE          49            12
-## 12   LEI          62             5
-## 13   WOL          59             7
-## 14   NEW          44            13
-## 15   AVL          35            17
-## 16   NOR          21            20
-## 17   SOU          52            11
-## 18   WAT          34            19
-## 19   CHE          66             4
-## 20   WHU          39            16</code></pre>
-<pre><code>## # A tibble: 20 x 2
-##    team           avg_age
-##    &lt;fct&gt;            &lt;dbl&gt;
-##  1 Arsenal           25.9
-##  2 Aston Villa       27.1
-##  3 Bournemouth       25.9
-##  4 Brighton          26.8
-##  5 Burnley           28.6
-##  6 Chelsea           25.3
-##  7 Crystal Palace    28.6
-##  8 Everton           26.4
-##  9 Leicester         26.4
-## 10 Liverpool         26.6
-## 11 Man City          26.8
-## 12 Man Utd           25.1
-## 13 Newcastle         27.0
-## 14 Norwich           26.4
-## 15 Sheff Utd         28.1
-## 16 Southampton       25.5
-## 17 Tottenham         25.7
-## 18 Watford           28.3
-## 19 West Ham          28.1
-## 20 Wolves            25.4</code></pre>
-<pre><code>##    Teams GW38_Points GW38_Standing
-## 1    MCI          81             2
-## 2    MUN          66             3
-## 3    LIV          99             1
-## 4    BHA          41            15
-## 5    BUR          54            10
-## 6    TOT          59             6
-## 7    ARS          56             8
-## 8    BOU          34            18
-## 9    SHU          54             9
-## 10   CRY          43            14
-## 11   EVE          49            12
-## 12   LEI          62             5
-## 13   WOL          59             7
-## 14   NEW          44            13
-## 15   AVL          35            17
-## 16   NOR          21            20
-## 17   SOU          52            11
-## 18   WAT          34            19
-## 19   CHE          66             4
-## 20   WHU          39            16</code></pre>
-<p>Using both of these data sets, I will join them by name and create just one data set that is easiy to read. Then i will graph them to show if the average age of players on each team correlates with the amount of wins.</p>
-<p>#Question 3: Which player scores more goals per game?.
+<p>#Question 2: What team had better player performance?
+Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.
+<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>#Question 3: Which player scored more goals per game?.
 Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart.</p>
 <pre><code>## 
 ## Attaching package: &#39;cowplot&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:patchwork&#39;:
 ## 
 ##     align_plots</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-6-2.png" width="672" />
-*Question 4: Fourth, To be announced.</p>
-<p><strong>Conclusion</strong></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>#Conclusion</p>
 <p>More analysis and question to come.</p>
 <p>*To be Determined</p>

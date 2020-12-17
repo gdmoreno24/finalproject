@@ -69,8 +69,8 @@ In this project, I am going to look through data which explores fatal shootings 
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>In the graph above, I was wanting to answer the question of which states tend to have the most police killings. From the results, it shows that California has significantly more police killings than any other state in the United States. This could be of many reason, for example population, size of police task force, and even the crime rate. More analysis on this to come in the near future.</p>
 </div>
-<div id="question-2-do-a-certain-race-tend-to-be-killed-more" class="section level1">
-<h1>Question 2: Do a certain race tend to be killed more?</h1>
+<div id="question-2-who-tend-to-be-killed-more-often" class="section level1">
+<h1>Question 2: Who tend to be killed more often?</h1>
 <p>Again, using the “police_killings.csv” data, I will group the police killings by race and compare the number of killings by race. Using this data I will be analyzing which gender tends to be killed more often by police officers. Also, I will being doing this for both police killing and police deaths, and I will be visualizing my findings with a bar chart for easy comparison.
 <img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre><code>##   id               name       date  manner_of_death      armed age gender race
@@ -98,8 +98,23 @@ In this project, I am going to look through data which explores fatal shootings 
 Using the data set, the results tend to show that white’s are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female This could be of many factors that I am yet to draw conclusions from. Using these results I will be comparing the percent population of each race in the United States to the percent of police killings by race. So, that will answer if there are more white people getting killed because there are more white people in the United States. Therefore, we are going to be able to tell which race gets killed by the police based off the percent of the population that race makes up in the United States. I will be doing this for both police killings and police deaths since 2015. The data above excluded blank/unknown spaces in the dataset.</p>
 <p>#Question 3: How are people getting killed and what is the death cause by.
 Using the dataset, I will be asking questions like: if the victim was armed, was there signs of mental illness, the threat level of victim, and if the victim was fleeing. I will be making visualizations using ggplot bar graphs to help visualize my results.</p>
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-The results of interpretation show that there are way too many variables to determine if the victim was armed with a deadly weapon. I need to figure out a way to filter the variable to be able to tell if the vicim was armed with a deadly weapon.</p>
+<pre><code>## # A tibble: 5,338 x 15
+## # Groups:   armed [93]
+##       id name  date  manner_of_death armed   age gender race  city  state
+##    &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;           &lt;fct&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;
+##  1     3 Tim … 2015… shot            gun      53 M      A     Shel… WA   
+##  2     4 Lewi… 2015… shot            gun      47 M      W     Aloha OR   
+##  3    11 Kenn… 2015… shot            gun      18 M      W     Guth… OK   
+##  4    13 Kenn… 2015… shot            gun      22 M      H     Chan… AZ   
+##  5    15 Broc… 2015… shot            gun      35 M      W     Assa… KS   
+##  6    21 Ron … 2015… shot            gun      31 M      B     Free… TX   
+##  7    25 Nich… 2015… shot            gun      30 M      W     Des … IA   
+##  8    27 Omar… 2015… shot            gun      37 M      B     New … LA   
+##  9    37 Thom… 2015… shot            gun      49 M      W     Syra… UT   
+## 10    38 Jimm… 2015… shot            gun      71 M      W     Engl… AR   
+## # … with 5,328 more rows, and 5 more variables: signs_of_mental_illness &lt;fct&gt;,
+## #   threat_level &lt;fct&gt;, flee &lt;fct&gt;, body_camera &lt;fct&gt;, sum_armed &lt;int&gt;</code></pre>
+<p>The results of interpretation show that there are way too many variables to determine if the victim was armed with a deadly weapon. I need to figure out a way to filter the variable to be able to tell if the vicim was armed with a deadly weapon.</p>
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 As the results shown above by the graph, it tends to show that victim are mostly always killed by being shot. The two variable are quite similar, as the only difference is that if a taser would have been involved in the death.</p>
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" />

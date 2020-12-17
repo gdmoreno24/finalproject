@@ -41,7 +41,6 @@ In the graph above, the points show where the killing was at exactly in United S
 police4 %>%
   ggplot(aes(x = state, fill = state)) +
   geom_bar() +
-  facet_wrap(~ date) +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(angle = 90)) +
   ggtitle("Pollice Killings by State 2015-2020")
@@ -50,7 +49,7 @@ police4 %>%
 In the graph above, I was wanting to answer the question of which states tend to have the most police killings. From the results, it shows that California has significantly more police killings than any other state in the United States. This could be of many reason, for example population, size of police task force, and even the crime rate. More analysis on this to come in the near future.
 
 
-# Question 2: Do a certain race tend to be killed more? 
+# Question 2: Who tend to be killed more often? 
 Again, using the "police_killings.csv" data, I will group the police killings by race and compare the number of killings by race. Using this data I will be analyzing which gender tends to be killed more often by police officers. Also, I will being doing this for both police killing and police deaths, and I will be visualizing my findings with a bar chart for easy comparison.
 ```{r}
 police4 %>%
@@ -75,12 +74,13 @@ Using the dataset, I will be asking questions like: if the victim was armed, was
 police4 %>%
   group_by(armed) %>%
   mutate(sum_armed = length(armed)) %>%
+  arrange(desc(sum_armed))
 # filter sum_armed usable data 
-  ggplot(aes(x = armed, fill = armed)) +
-  geom_bar() +
-  ggtitle("Were Pollice Killing Victims Armed?") +
-  xlab("Item") +
-  theme(legend.position = "none")
+ # ggplot(aes(x = armed, fill = armed)) +
+ # geom_bar() +
+ # ggtitle("Were Pollice Killing Victims Armed?") +
+ # xlab("Item") +
+ # theme(legend.position = "none")
 ```
 The results of interpretation show that there are way too many variables to determine if the victim was armed with a deadly weapon. I need to figure out a way to filter the variable to be able to tell if the vicim was armed with a deadly weapon.
 

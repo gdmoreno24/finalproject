@@ -33,75 +33,93 @@ epl3 %>%
   summarise(avg_height = mean(height))
 epl3 %>%
   select(name, position, height, weight, goals, games) %>%
-  filter(games >10, position != "Goalkeeper", goals > 1) %>%
+  filter(games >5, position != "Goalkeeper", goals > 1) %>%
   ggplot(aes(x = goals, y = height)) +
   geom_boxplot(fill = "purple4") +
   geom_hline(yintercept = 175.4, linetype = "dashed", color = "blue") +
- geom_jitter() +
+  geom_jitter() +
   ylim(165,200) +
- facet_wrap(~ position)
+  facet_wrap(~ position)
 
-#epl3 %>%
-#  select(name, position, height, weight, goals, games) %>%
-#  filter(games >10, position != "Goalkeeper", goals > 1) %>%
-#  ggplot(aes(x = goals, y = height)) +
-#  geom_vline(xintercept = 175.4, linetype = "dashed", color = "blue") +
-#  geom_boxplot(fill = "purple4") +
-#  geom_jitter() +
-#  xlim(165,200) +
-#  facet_wrap(~ position) 
+epl3 %>%
+  filter(games >5, position != "Goalkeeper", assists > 1) %>%
+  ggplot(aes(x = assists, y = height)) +
+  geom_boxplot(fill = "purple4") +
+  geom_hline(yintercept = 175.4, linetype = "dashed", color = "blue") +
+  geom_jitter() +
+  ylim(165,200) +
+  facet_wrap(~ position)
+
+epl3 %>%
+  filter(games >5, motm > 1) %>%
+  ggplot(aes(x = motm, y = height)) +
+  geom_boxplot(fill = "purple4") +
+  geom_hline(yintercept = 175.4, linetype = "dashed", color = "blue") +
+  geom_jitter() +
+  ylim(165,200) +
+  facet_wrap(~ position)
 ```
 The boxplot graph above shows the data for each position. The blue dashed line shows the average height of the players in the English Premier League, which is 175.4 cm or 5'7 ft. So, the results show that taller players tend to score more as forwards, which is surprising to me, as I would think a bit shorter, more agile player would be more effective.
 
-*Question 2: Second, do teams tend to preform better with older, experienced players or young, talented players. Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.
+#Question 2: What team had better player performance?
+Getting the average age of the players for each team and basing that with their results. Respectively, comparing if they score more goals, prevent more goals, and their wins, then plotting this into a bar chart.
 ```{r}
-head(epl2) 
-epl2 %>%
-  filter(GW38_Points > 1) %>%
-  select(Teams, GW38_Points, GW38_Standing)
-```
-```{r}
-#head(epl3) 
-epl3 %>%
-  select(name, age, team) %>%
+epl3 %>% 
   group_by(team) %>%
-  summarise(avg_age = mean(age))
+  summarise(total_motm = sum(motm)) %>%
+  arrange(desc(total_motm)) %>%
+ # slice(1:8) %>%
+  ggplot(aes(team, total_motm, fill = team)) +
+  geom_col() +
+  geom_text(aes(label = total_motm)) +
+  coord_flip()
 
-epl2 %>%
-  filter(GW38_Points > 1) %>%
-  select(Teams, GW38_Points, GW38_Standing)
+epl3 %>%
+  group_by(team) %>%
+  summarise(avg_player_rating = mean(rating_m)) %>%
+  arrange(desc(avg_player_rating)) %>%
+  slice(1:10) %>%
+  ggplot(aes(team, avg_player_rating, fill = team)) +
+  geom_col() +
+  coord_flip() +
+  geom_text(aes(label = avg_player_rating))
 ```
-Using both of these data sets, I will join them by name and create just one data set that is easiy to read. Then i will graph them to show if the average age of players on each team correlates with the amount of wins.
 
-#Question 3: Which player scores more goals per game?. 
+
+#Question 3: Which player scored more goals per game?. 
 Do team that spend more money obtaining and paying more players translate to more wins. I will be comparing the total amount spent by each team and comparing them in a bar chart. 
 
 ```{r}
 library(cowplot)
 epl3 %>%
-  filter(goals > 1, position == "Forward") %>%
   mutate(avg_goals_per_game = goals/ games) %>%
   arrange(desc(avg_goals_per_game)) %>%
   slice(1:8) %>%
   ggplot(aes(x = name, y = avg_goals_per_game, fill = team)) +
   geom_col() +
   coord_flip() +
-  geom_text(aes(label = avg_goals_per_game), vjust = -0.5)
+  geom_text(aes(label = avg_goals_per_game), vjust = -0.5) +
+  xlab("Name of Player") +
+  ylab("Goals per Game Average") +
+  ggtitle("Top Goals per Game Ratio") +
+  theme(plot.title = element_text(hjust = 0.5))
 
 epl3 %>%
-  filter(goals > 1, position == "Forward") %>%
   mutate(avg_goals_per_game = goals/ games) %>%
   arrange(desc(goals)) %>%
   slice(1:8) %>%
   ggplot(aes(x = name, y = goals, fill = team)) +
   geom_col() +
   coord_flip() +
-  geom_text(aes(label = goals))
+  geom_text(aes(label = goals)) +
+  xlab("Name of Player") +
+  ylab("Number of Goals") +
+  ggtitle("19/20 Top Goalscorers") +
+  theme(plot.title = element_text(hjust = 0.5))
 
 ```
-*Question 4: Fourth, To be announced.
 
-**Conclusion**
+#Conclusion
 
 More analysis and question to come.
 
