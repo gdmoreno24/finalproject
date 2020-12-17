@@ -32,7 +32,7 @@ police2 %>%
       borders("state") +
       geom_point() +
       coord_quickmap() +
-      ggtitle("Pollice Killings in 2015") +
+      ggtitle("Police Killings in 2015") +
       theme(plot.title = element_text(hjust = 0.5)) 
 ```
 
