@@ -15,16 +15,16 @@ library(tinytex)
 library(maptools)
 library(fivethirtyeight)
 knitr::opts_chunk$set(echo = FALSE, tidy = TRUE)
-police1 <- read.csv(file = here::here("police_data", "clean_data.csv"))
 police2 <- read.csv(file = here::here("police_data", "police_killings.csv"))
-police3 <- read.csv(file = here::here("police_data", "police-locals.csv"))
 police4 <- read.csv(file = here::here("police_data", "fatal-police-shootings-data.csv"))
-head(police1)
+head(police2)
+head(police4)
 ```
 Using data obtained from FiveThirtyEight, collected from The Washington Post and the US Census, the  dataset I am going to analyze will consist of fatal police killings in the United States from 2015-2020. The variables in the files include the date of the incident, state, name of deceased, race, gender, ect. The US population data is from the US Census Bureau website. There are 22,800 observations and 10 variables in the "clean_data.csv" file, which go into depth about police killings The "police_killings.csv" goes into depth about the police killing, which has 467 observations, and 34 variables. On the last dataset, the data is a collected from multiple police station from the biggest cities in the United States. With all the different data available, there should be enough data for me to analyze. 
 In this project, I am going to look through data which explores fatal shootings by on duty police officers since 2015. Analyzing this data, I will be asking a variety of questions to help further understand my knowledge on police killings. As I continue to ask many questions, I will try to create a visualization of the interpretations I will gather. I will be making graphs using ggplot in R.
 
 # Where do the police killings tend to happen more frequently? 
+
 Using the "police_killings.csv" data I will analyze where these police killings tend to happen more frequently, looking for trends like if there is a state with notably more killings than other states. I will preform this analysis with grouping, filtering, and creating a spacial map with ggplot to visualize my analysis.
 ```{r, echo=TRUE}
 police2 %>%
@@ -41,15 +41,6 @@ In the graph above, the points show where the killing exactly occured in United 
 
 ```{r, echo=TRUE}
 police4 %>%
-  ggplot(aes(x = state, fill = state)) +
-  geom_bar() +
-  theme(legend.position = "none") +
-  theme(axis.text.x = element_text(angle = 90)) +
-  ggtitle("Pollice Killings by State 2015-2020") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-police4 %>%
-  filter(date < "2015-12-31") %>%
   ggplot(aes(x = state, fill = state)) +
   geom_bar() +
   theme(legend.position = "none") +
@@ -75,7 +66,7 @@ police4 %>%
   ylab("Number of Deaths") +
   xlab("Race of Victim")
 ```
-```{r}
+```{r, echo = true}
 head(police4)
 police4 %>% 
   filter(gender != "") %>%
@@ -91,7 +82,7 @@ The variable for the graphs above go as follows: M-Male, F-Female, W-White, B-Bl
 
 Using the dataset, I will be asking questions like of how victims are getting killed by police, taking into consideration if the police officer felt threatened, if body cameras were utilized, and if the victim tried to flee.
 
-```{r}
+```{r, echo=TRUE}
 police4 %>%
   ggplot(aes(manner_of_death, fill = manner_of_death)) +
   geom_bar() +
@@ -101,7 +92,7 @@ police4 %>%
 ```
 As the results shown above by the graph, it tends to show that victim are mostly always killed by being shot. The two variable are quite similar, as the only difference is that if a taser would have been involved in the death.
 
-```{r}
+```{r, echo=TRUE}
 police4 %>%
   filter(race != "") %>%
   ggplot(aes(threat_level, fill = body_camera)) +
@@ -113,7 +104,7 @@ police4 %>%
 ```
 The victim of police killings tend to be killed more often if they are considered to be to show an "attack" to the police officer. There could be many reasons of this, and one of those reasons could be that the definition of an "attack" could be different to person to person. So, there could be no way to draw a definite conclusion to this question. Though, I was able to fill the bars of data of each threat level to determine if there was body camera footage to the police killing. I noticed that in most deaths the police were not using the cameras or were turned off. The results of this analysis surprised me as the years of this data was being collected from 2015-2020, which I would suppose that the majority of cops would have a body camera at that point of time.
 
-```{r}
+```{r, echo=TRUE}
 police4 %>%
   filter(flee != "") %>%
   ggplot(aes(x=signs_of_mental_illness, fill = flee)) +
