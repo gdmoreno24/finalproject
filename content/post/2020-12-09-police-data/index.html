@@ -59,20 +59,31 @@ head(police1)</code></pre>
 ## 4 United States Department of Justice - United States Marshals Service    US
 ## 5                                   Greenville County Sheriff&#39;s Office    SC
 ## 6                                  Mecklenburg County Sheriff&#39;s Office    NC</code></pre>
-<p>Using data obtained from FiveThirtyEight, collected from The Washington Post and the census, the next dataset I am going to analyze the data of police killings and deaths in the United States, from 2015-2020. The variables in the files include the date, state, name of deceased, race, gender, ect. The US population data is from the US Census Bureau website. There are 22,800 observations and 10 variables in the “clean_data.csv” file, which go into depth about police deaths. The “police_killings.csv” goes into depth about the police killing, which has 467 observations, and 34 variables. On the last dataset, the data is a collected from multiple police station from the biggest cities in the United States. With all the different data available, there should be enough data for me to analyze.
+<p>Using data obtained from FiveThirtyEight, collected from The Washington Post and the US Census, the dataset I am going to analyze will consist of fatal police killings in the United States from 2015-2020. The variables in the files include the date of the incident, state, name of deceased, race, gender, ect. The US population data is from the US Census Bureau website. There are 22,800 observations and 10 variables in the “clean_data.csv” file, which go into depth about police deaths. The “police_killings.csv” goes into depth about the police killing, which has 467 observations, and 34 variables. On the last dataset, the data is a collected from multiple police station from the biggest cities in the United States. With all the different data available, there should be enough data for me to analyze.
 In this project, I am going to look through data which explores fatal shootings by on duty police officers since 2015. Analyzing this data, I will be asking a variety of questions to help further understand my knowledge on police killings. As I continue to ask many questions, I will try to create a vizualation of the intrepetations I will gather. I will be making graphs using ggplot in R.</p>
-<div id="question-1-where-do-the-police-killings-tend-to-happen-more-frequently." class="section level1">
-<h1>Question 1: Where do the police killings tend to happen more frequently.</h1>
-<p>Using the “police_killings.csv” data I will analyze where these police killings tend to happen more frequently, like is there a state with notably more killings than the rest. I will preform this analysis with grouping, filtering, and creating a spacial map with ggplot to visualize my analysis.
-<img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>In the graph above, the points show where the killing was at exactly in United States in the year of 2015 alone. I plotted the longitude on the x axis and latitude on the y axis, and the results shows that there were more police killings on the eastern part of the United States compared to the west.</p>
+<div id="where-do-the-police-killings-tend-to-happen-more-frequently" class="section level1">
+<h1>Where do the police killings tend to happen more frequently?</h1>
+<p>Using the “police_killings.csv” data I will analyze where these police killings tend to happen more frequently, looking for trends like if there is a state with notably more killings than other states. I will preform this analysis with grouping, filtering, and creating a spacial map with ggplot to visualize my analysis.</p>
+<pre class="r"><code>police2 %&gt;% ggplot(aes(longitude, latitude, color = raceethnicity)) + borders(&quot;state&quot;) + 
+    geom_point() + coord_quickmap() + ggtitle(&quot;Pollice Killings in 2015&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>In the graph above, the points show where the killing exactly occured in United States in the year of 2015 alone. I plotted the longitude on the x axis and latitude on the y axis, and the results shows that there were more police killings on the east side of the United States compared to the West. I also colored the dots to show what race was being killed.</p>
+<pre class="r"><code>police4 %&gt;% ggplot(aes(x = state, fill = state)) + geom_bar() + theme(legend.position = &quot;none&quot;) + 
+    theme(axis.text.x = element_text(angle = 90)) + ggtitle(&quot;Pollice Killings by State 2015-2020&quot;) + 
+    theme(plot.title = element_text(hjust = 0.5))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>In the graph above, I was wanting to answer the question of which states tend to have the most police killings. From the results, it shows that California has significantly more police killings than any other state in the United States. This could be of many reason, for example population, size of police task force, and even the crime rate. More analysis on this to come in the near future.</p>
-</div>
-<div id="question-2-who-tend-to-be-killed-more-often" class="section level1">
-<h1>Question 2: Who tend to be killed more often?</h1>
-<p>Again, using the “police_killings.csv” data, I will group the police killings by race and compare the number of killings by race. Using this data I will be analyzing which gender tends to be killed more often by police officers. Also, I will being doing this for both police killing and police deaths, and I will be visualizing my findings with a bar chart for easy comparison.
-<img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>police4 %&gt;% filter(date &lt; &quot;2015-12-31&quot;) %&gt;% ggplot(aes(x = state, fill = state)) + 
+    geom_bar() + theme(legend.position = &quot;none&quot;) + theme(axis.text.x = element_text(angle = 90)) + 
+    ggtitle(&quot;Pollice Killings by State 2015-2020&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<pre><code>## Warning in Ops.factor(date, &quot;2015-12-31&quot;): &#39;&lt;&#39; not meaningful for factors</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>In the graph above, I was wanting to answer the question of which states tend to have the most police killings. From the results, it shows that California has significantly more police killings than any other state in the United States. This could be of many reason, for example population, size of police task force, and even the crime rate. The two states with the most fatal police killings are also the two most populated states in the United States.</p>
+<p>#Who tend to be killed more often by police officers?</p>
+<p>Again, using the “police_killings.csv” data, I will group the police killings by race and compare the number of killings by race. Using the same data I will also be analyzing which gender tends to be killed more often by police officers. In order to analyze this, I will group by race on one graph and group by gender on another and will be visualizing my findings with a bar chart for easy comparison.</p>
+<pre class="r"><code>police4 %&gt;% filter(race != &quot;&quot;) %&gt;% ggplot(aes(x = race, fill = race)) + geom_bar() + 
+    ggtitle(&quot;Police Killings by Race (2015-2020)&quot;) + theme(plot.title = element_text(hjust = 0.5)) + 
+    ylab(&quot;Number of Deaths&quot;) + xlab(&quot;Race of Victim&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre><code>##   id               name       date  manner_of_death      armed age gender race
 ## 1  3         Tim Elliot 2015-01-02             shot        gun  53      M    A
 ## 2  4   Lewis Lee Lembke 2015-01-02             shot        gun  47      M    W
@@ -95,7 +106,7 @@ In this project, I am going to look through data which explores fatal shootings 
 ## 5       False
 ## 6       False</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" />
-Using the data set, the results tend to show that white’s are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female This could be of many factors that I am yet to draw conclusions from. Using these results I will be comparing the percent population of each race in the United States to the percent of police killings by race. So, that will answer if there are more white people getting killed because there are more white people in the United States. Therefore, we are going to be able to tell which race gets killed by the police based off the percent of the population that race makes up in the United States. I will be doing this for both police killings and police deaths since 2015. The data above excluded blank/unknown spaces in the dataset.</p>
+Using the data set, the results tend to show that white’s are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female. This could be of many factors that I am unable to draw conclusions from at the time. The data above included blank/unknown spaces in the dataset, so I had to filter those unknown spaces to better visualize my findings. The answer that there are more white’s getting killed might be because there are more white people in the United States. Therefore, we are unable to tell which race gets killed by the police more often based off the percent of race makes up in the United States. Additionally, the rate of fatal police shootings among certain race could be much higher than that for any other ethnicity. Though, it is undeniable that men tend to be killed far more often than women from police officers.</p>
 <p>#Question 3: How are people getting killed and what is the death cause by.
 Using the dataset, I will be asking questions like: if the victim was armed, was there signs of mental illness, the threat level of victim, and if the victim was fleeing. I will be making visualizations using ggplot bar graphs to help visualize my results.</p>
 <pre><code>## # A tibble: 5,338 x 15
