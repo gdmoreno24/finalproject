@@ -52,7 +52,7 @@ police4 %>%
 In the graph above, I was wanting to answer the question of which states tend to have the most police killings. From the results, it shows that California has significantly more police killings than any other state in the United States. This could be of many reason, for example population, size of police task force, and even the crime rate. The two states with the most fatal police killings are also the two most populated states in the United States. 
 
 
-#Who tend to be killed more often by police officers? 
+# Who tends to be killed more often by police officers? 
 
 Again, using the "police_killings.csv" data, I will group the police killings by race and compare the number of killings by race. Using the same data I will also be analyzing which gender tends to be killed more often by police officers. In order to analyze this, I will group by race on one graph and group by gender on another and will be visualizing my findings with a bar chart for easy comparison.
 
@@ -78,7 +78,7 @@ police4 %>%
 ```
 The variable for the graphs above go as follows: M-Male, F-Female, W-White, B-Black, H-Hispanic, A-American Native, S-Asian,and O-Unknown. Using the data set, the results tend to show that white's are getting killed more often than any other race. Also, results show that male tend to be killed far more often than female. This could be of many factors that I am unable to draw conclusions from at the time. The data above included blank/unknown spaces in the dataset, so I had to filter those unknown spaces to better visualize my findings. The answer that there are more white's getting killed might be because there are more white people in the United States. Therefore, we are unable to tell which race gets killed by the police more often based off the percent of race makes up in the United States. Additionally, the rate of fatal police shootings among certain race could be much higher than that for any other ethnicity. Regardless, it is undeniable that men tend to be killed far more often than women from police officers.
 
-#How are victims getting killed? 
+# How are victims getting killed? 
 
 Using the dataset, I will be asking questions like of how victims are getting killed by police, taking into consideration if the police officer felt threatened, if body cameras were utilized, and if the victim tried to flee.
 
@@ -116,6 +116,6 @@ police4 %>%
 In my analysis above, the graph answers the question if the victims of the police killings showed signs of mental illness. Along with comparing these in a bar chart, I filled the chart to show if the victim tried to flee, and if so how they did so. Regardless, from the data, there shows to be more victim deaths if they did not show signs of mental illness.
 
 
-#Conclusion
+# Conclusion
 
 In conclusion, while this data set doesn't capture the United State's full history of police violence, this does offer important information on trends that occurred in the passed 5 years. It is important to recognize which race groups and genders tend to be killed more, as data might not complete show the complete picture. Also, noting that the views of this dat could potentially be biased, as the other side of the story is unable to be told. 
