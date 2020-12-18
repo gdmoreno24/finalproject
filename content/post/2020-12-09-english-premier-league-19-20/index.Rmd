@@ -86,7 +86,8 @@ epl3 %>%
 
 Finally, the results of this graph answers the question originally asked. In the boxplot shown above, the majority of the points, representing man of the match awards, tend to be above the blue dotted line. So, taller players are more likly to score more goals, provide more assist, and recieve the man of the match award compared to shorter players under the height of 5'7ft.
 
-#What teams have better player performance?
+# What teams have better player performance?
+
 In order to answer this question I will analyze players from each team according to their match rating average throughout the season and the amount of Man of the Match awards received by each team. Using column charts, I will group players by their teams and then get the average player rating of each athlete and count all the MOTM awards, and then will compare the results to other teams in the Premier League to figure out which team had the best prforming players.
 
 In this first graph, I compared the total amount of Man of the Match (MOTM) awards per team.
@@ -129,7 +130,8 @@ epl3 %>%
 In the graph, only the top 10 teams with the best average player rating was plotted. From the results shown above, the club of Manchester City averaged the highest player rating throughout the season compared to teams around the league. The scale is based out of 10 and is given based on player performance like goals given up, goals scored, tackles lost, ect. So, data shows that Man City led the league, but Liverpool and other follwed shortly behind. Data has tend to show that players from Manchester City and Liverpool preform better in games throughout the season.
 
 
-#Which players have scored more goals throughout the season?. 
+# Which players have scored more goals throughout the season?. 
+
 To figure out this question, I made 4 different graphs to summarize which players tend to scoring more. In the following graphs, the goalkeeper was excluded because it is very unlikely for a goalkeeper to score in games. I asked multiple questions to acquire the most information on which player scores the most. Asking questions like: which position tends to score the most, who are the top goal scorers, what is the highest goals scored per game average, and what teams score the most.
 
 In this column graph, I summarised all the goals scored based off the position played by each player. 
@@ -279,7 +281,7 @@ epl3 %>%
 In the column graph above shows both Liverpool and Man City lead the rest of the league in assists, with the closest behind more than 20 assists. Both teams managed to achieve 69 assists throughout the season, averaging 1.82 assists per game. 
 
 
-#Conclusion
+# Conclusion
 
 In conclusion, data from the 2019/2020 showed that taller players tended to preform better all around. Also, from this analysis, we learned players from Liverpool and Manchester City lead the charts in almost every category. These teams dominated all throughout the season, scoring the most goals receiving the most MOTM awards, and achieving the most assists. Each team consistently managed to have almost two players in the top 8 of assists and goals. Through data visualization, although some players show to have the most goals or assists, they might not be the most efficient. Even when they lead in these categories, usually another player obtained a better ratio goals/assists per game. Both of these dominated the league, but in the end, Liverpool came out on top as champions, racking up 99 points. Leaving them the sole leader after 38 games, leaving Manchester City 18 points behind.
 
@@ -291,5 +293,8 @@ epl2 %>%
   geom_col() +
   theme(legend.position = "none") +
   geom_text(aes(label = GW38_Points)) +
+  ylab("Final Points") +
+  xlab("Name of Team") +
+  ggtitle("Final EPL 19/20 Standings")
   
 ```
