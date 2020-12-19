@@ -214,7 +214,7 @@ head(epl2)</code></pre>
 <p>In this first graph, I compared the total amount of Man of the Match (MOTM) awards per team.</p>
 <pre class="r"><code>epl3 %&gt;% group_by(team) %&gt;% summarise(total_motm = sum(motm)) %&gt;% arrange(desc(total_motm)) %&gt;% 
     ggplot(aes(team, total_motm, fill = team)) + geom_col() + geom_text(aes(label = total_motm)) + 
-    coord_flip() + theme(legend.position = &quot;none&quot;) + ylab(&quot;Name of Team&quot;) + xlab(&quot;Number of MOTM awards recieved&quot;) + 
+    coord_flip() + theme(legend.position = &quot;none&quot;) + xlab(&quot;Name of Team&quot;) + ylab(&quot;Number of MOTM awards recieved&quot;) + 
     ggtitle(&quot;MOTM Awards recieved by Team&quot;) + theme(plot.title = element_text(hjust = 0.5))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>The results from the graph shows that players from Liverpool accumulated the most MOTM awards throughout the 19/20. Liverpool collected 32 MOTM awards, which shows great player performances. In the EPL, each teams plays a total of 38 games, meaning out of the 38 games Liverpool played, 32 out of those games a player from their team received the award. Roughly, in the total games they played, a player from Liverpool received the award 89% of the time. Chelsea, Manchester City, and Manchester United followed no too far behind.</p>
@@ -222,7 +222,7 @@ head(epl2)</code></pre>
 <pre class="r"><code>epl3 %&gt;% group_by(team) %&gt;% summarise(avg_player_rating = mean(rating_m)) %&gt;% arrange(desc(avg_player_rating)) %&gt;% 
     slice(1:10) %&gt;% ggplot(aes(team, avg_player_rating, fill = team)) + geom_col() + 
     coord_flip() + geom_text(aes(label = avg_player_rating)) + theme(legend.position = &quot;none&quot;) + 
-    ylab(&quot;Name of Team&quot;) + xlab(&quot;Average Player Rating&quot;) + ggtitle(&quot;Average Player Rating by Team&quot;) + 
+    xlab(&quot;Name of Team&quot;) + ylab(&quot;Average Player Rating&quot;) + ggtitle(&quot;Average Player Rating by Team&quot;) + 
     theme(plot.title = element_text(hjust = 0.5))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>In the graph, only the top 10 teams with the best average player rating was plotted. From the results shown above, the club of Manchester City averaged the highest player rating throughout the season compared to teams around the league. The scale is based out of 10 and is given based on player performance like goals given up, goals scored, tackles lost, ect. So, data shows that Man City led the league, but Liverpool and other follwed shortly behind. Data has tend to show that players from Manchester City and Liverpool preform better in games throughout the season.</p>

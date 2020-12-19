@@ -101,8 +101,8 @@ epl3 %>%
   geom_text(aes(label = total_motm)) +
   coord_flip() +
   theme(legend.position = "none") +
-  ylab("Name of Team") +
-  xlab("Number of MOTM awards recieved") +
+  xlab("Name of Team") +
+  ylab("Number of MOTM awards recieved") +
   ggtitle("MOTM Awards recieved by Team") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
@@ -121,8 +121,8 @@ epl3 %>%
   coord_flip() +
   geom_text(aes(label = avg_player_rating)) +
   theme(legend.position = "none") +
-  ylab("Name of Team") +
-  xlab("Average Player Rating") +
+  xlab("Name of Team") +
+  ylab("Average Player Rating") +
   ggtitle("Average Player Rating by Team") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
